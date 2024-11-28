@@ -1,0 +1,25 @@
+# Папка с виртуальным окружением
+venv/
+
+# Игнорировать все файлы .env
+*.env
+
+# Не игнорировать файлы .env_example
+!.env_example
+
+# Папки с кэшами
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Файлы конфигурации IDE
+.idea/
+*.swp
+*.sublime-project
+*.sublime-workspace
+
+# Игнорировать файлы с данными
+*.csv
+*.parquet
+!sample.parquet
