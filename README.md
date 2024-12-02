@@ -2,7 +2,7 @@
 
 Project for LLM vulnerability detection using RAG
 
-
+## Tree
 ```
 RAG_Chatbot_Project/
 │
@@ -37,3 +37,7 @@ RAG_Chatbot_Project/
 │
 └── requirements.txt          # Python-зависимости
 ```
+
+## Dataset
+Для получения документа, необходимого для инициализации chromadb нужно скачать его по [ссылке](https://drive.google.com/file/d/1lXX20WYPOFZJ3y_wHeLfLXRV3oCom6x1/view?usp=drive_link) ,а затем добавить в директорию `llm_service`
+
