@@ -22,4 +22,7 @@ __pycache__/
 # Игнорировать файлы с данными
 *.csv
 *.parquet
-!sample.parquet
+!sample.csv
+*.pkl
+
+notebooks/
