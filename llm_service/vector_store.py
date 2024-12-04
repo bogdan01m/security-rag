@@ -1,7 +1,5 @@
-from langchain.text_splitter import CharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
-import polars as pl
 import logging
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')

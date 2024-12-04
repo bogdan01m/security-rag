@@ -26,3 +26,5 @@ __pycache__/
 # *.pkl
 
 notebooks/
+llm_service/chroma_vector_store/
+
