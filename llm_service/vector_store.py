@@ -20,3 +20,5 @@ try:
     )
 except Exception as e:
     logger.error(f"Не удалось загрузить векторное хранилище: {e}")
+    logger.info("Сначала нужно запустить init_vector_store.py для инициализации векторного хранилища")
+    

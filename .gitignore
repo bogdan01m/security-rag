@@ -23,6 +23,6 @@ __pycache__/
 *.csv
 *.parquet
 !sample.csv
-*.pkl
+# *.pkl
 
 notebooks/
