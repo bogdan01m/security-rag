@@ -22,9 +22,13 @@ __pycache__/
 # Игнорировать файлы с данными
 *.csv
 *.parquet
+*.json
+*.txt
+*.pkl
 !sample.csv
 # *.pkl
 
-notebooks/
 llm_service/chroma_vector_store/
 
+#ноутбук
+notebooks/data.ipynb

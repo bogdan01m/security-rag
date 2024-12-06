@@ -1,9 +1,9 @@
 from fastapi import FastAPI
-from process_prompt import router as prompt_router
+from process_request import router as request_router
 
 app = FastAPI()
 
-app.include_router(prompt_router)
+app.include_router(request_router)
 
 if __name__ == "__main__":
     import uvicorn
