@@ -38,6 +38,12 @@ RAG_Chatbot_Project/
 └── requirements.txt          # Python-зависимости
 ```
 
-## Dataset
-Для получения документа, необходимого для инициализации chromadb нужно скачать его по [ссылке](https://drive.google.com/file/d/1lXX20WYPOFZJ3y_wHeLfLXRV3oCom6x1/view?usp=drive_link) ,а затем добавить в директорию `llm_service`
+## 
+Перед запуском приложения необходимо:
+запустить `llm_service/init_vector_store.py` для инициализации векторного хранилища;
 
+Далее можно запустить
+`llm_service/main.py` и например через `postman` покидать запросы по адресу : 
+`http://localhost:8000/process_prompt/`
+
+Также можно запустить `prompt_rag.py` для проверки в терминале
