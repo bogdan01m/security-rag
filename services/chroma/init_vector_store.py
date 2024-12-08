@@ -16,9 +16,6 @@ def initialize_vector_store():
 
     file_path = "documents.csv"
 
-    loader = CSVLoader(file_path=file_path)
-    data = loader.load()
-
 
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=10000,
