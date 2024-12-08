@@ -5,6 +5,9 @@ services:
     container_name: chroma
     env_file:
       - .env
+    environment:
+      - CHROMA_PERSIST_DIRECTORY=${CHROMA_PERSIST_DIRECTORY}
+      - CSV_FILE_PATH=${CSV_FILE_PATH}
     ports:
       - "${CHROMA_PORT}:8000"
     volumes:
@@ -20,7 +23,7 @@ services:
     ports:
       - "${LLM_PORT}:8000"
     environment:
-      - API_KEY=${API_KEY}
+      - MISTRAL_API_KEY=${MISTRAL_API_KEY}
       - CHROMA_HOST=${CHROMA_HOST}
       - CHROMA_PORT=${CHROMA_PORT}
     depends_on:
