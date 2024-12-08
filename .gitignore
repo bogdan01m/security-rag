@@ -26,6 +26,7 @@ __pycache__/
 *.txt
 *.pkl
 !sample.csv
+!*requirements.txt
 # *.pkl
 
 llm_service/chroma_vector_store/
