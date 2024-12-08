@@ -11,7 +11,7 @@ from llm.models import UserRequest, RAGResponse
 
 
 load_dotenv()
-API_KEY = os.getenv("MISTRAL_API_KEY")
+MISTRAL_API_KEY = os.getenv("MISTRAL_API_KEY")
 CHROMA_HOST = os.getenv("CHROMA_HOST")
 CHROMA_PORT = os.getenv("CHROMA_PORT")
 
@@ -21,7 +21,7 @@ logger.info("Initializing SecurityRAG")
 security_rag = SecurityRAG(
     chroma_host=CHROMA_HOST,
     chroma_port=CHROMA_PORT,
-    mistral_api=API_KEY,
+    mistral_api=MISTRAL_API_KEY,
     prompt=SECURITY_PROMPT_V1,
 )
 logger.info("Successfully initialized SecurityRAG")
