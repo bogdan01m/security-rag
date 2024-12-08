@@ -19,7 +19,7 @@ SECURITY_PROMPT_V1 = ChatPromptTemplate.from_template(
 											
 	take this classes for response_refusal_label:
 	- refusal
-	- compilance
+	- compliance
 											
 	take this classes for response_harm_label:
 	- unharmful

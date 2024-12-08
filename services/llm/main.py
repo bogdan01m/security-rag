@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from .process_request import router as request_router
+from llm.process_request import router as request_router
 
 app = FastAPI()
 app.include_router(request_router)

@@ -3,6 +3,8 @@ from __future__ import annotations
 from typing import Any, Dict, Union
 from pydantic import BaseModel
 
+from llm.logger import logger
+
 
 class UserRequest(BaseModel):
     user_id: int
@@ -27,6 +29,7 @@ class RAGResponse(BaseModel):
         user_id: int, response: Union[Dict[str, str], Any]
     ) -> RAGResponse:
         if not isinstance(response, dict):
+            logger.info(f"{user_id=} Not dict")
             return RAGResponse(user_id=user_id)
 
         # Filter only required keys
@@ -35,12 +38,14 @@ class RAGResponse(BaseModel):
             for key, value in response.items()
             if key in RAGResponse.__annotations__
         }
+        logger.info(f"{user_id=} {filtered_response}")
 
         # Check if all required fields are present and valid
         if all(
             filtered_response.get(key, None) is not None
-            for key in RAGResponse.__annotations__
+            for key in list(RAGResponse.__annotations__.keys())[1:]
         ):
+            logger.info(f"{user_id=} Passed test")
             return RAGResponse(user_id=user_id, **filtered_response)
 
         return RAGResponse(user_id=user_id)

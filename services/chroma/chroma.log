@@ -1,0 +1,267 @@
+WARNING:  [08-12-2024 11:55:36] chroma_server_nofile is set to 65535, but this is less than current soft limit of 1048576. chroma_server_nofile will not be set.
+INFO:     [08-12-2024 11:55:36] Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+DEBUG:    [08-12-2024 11:55:36] Starting component System
+DEBUG:    [08-12-2024 11:55:36] Starting component OpenTelemetryClient
+DEBUG:    [08-12-2024 11:55:36] Starting component SqliteDB
+DEBUG:    [08-12-2024 11:55:36] Starting component SimpleQuotaEnforcer
+DEBUG:    [08-12-2024 11:55:36] Starting component Posthog
+DEBUG:    [08-12-2024 11:55:36] Starting component SimpleRateLimitEnforcer
+DEBUG:    [08-12-2024 11:55:36] Starting component LocalSegmentManager
+DEBUG:    [08-12-2024 11:55:36] Starting component LocalExecutor
+DEBUG:    [08-12-2024 11:55:36] Starting component SegmentAPI
+INFO:     [08-12-2024 11:55:36] Started server process [1]
+INFO:     [08-12-2024 11:55:36] Waiting for application startup.
+INFO:     [08-12-2024 11:55:36] Application startup complete.
+INFO:     [08-12-2024 11:55:36] Uvicorn running on http://localhost:8000 (Press CTRL+C to quit)
+INFO:     [08-12-2024 11:56:30] Shutting down
+INFO:     [08-12-2024 11:56:30] Waiting for application shutdown.
+DEBUG:    [08-12-2024 11:56:30] Stopping component System
+DEBUG:    [08-12-2024 11:56:30] Stopping component SegmentAPI
+DEBUG:    [08-12-2024 11:56:30] Stopping component LocalExecutor
+DEBUG:    [08-12-2024 11:56:30] Stopping component LocalSegmentManager
+DEBUG:    [08-12-2024 11:56:30] Stopping component SimpleRateLimitEnforcer
+DEBUG:    [08-12-2024 11:56:30] Stopping component Posthog
+DEBUG:    [08-12-2024 11:56:30] Stopping component SimpleQuotaEnforcer
+DEBUG:    [08-12-2024 11:56:30] Stopping component SqliteDB
+DEBUG:    [08-12-2024 11:56:30] Stopping component OpenTelemetryClient
+INFO:     [08-12-2024 11:56:30] Application shutdown complete.
+INFO:     [08-12-2024 11:56:30] Finished server process [1]
+WARNING:  [08-12-2024 11:56:33] chroma_server_nofile is set to 65535, but this is less than current soft limit of 1048576. chroma_server_nofile will not be set.
+INFO:     [08-12-2024 11:56:33] Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+DEBUG:    [08-12-2024 11:56:33] Starting component System
+DEBUG:    [08-12-2024 11:56:33] Starting component OpenTelemetryClient
+DEBUG:    [08-12-2024 11:56:33] Starting component SqliteDB
+DEBUG:    [08-12-2024 11:56:33] Starting component SimpleQuotaEnforcer
+DEBUG:    [08-12-2024 11:56:33] Starting component Posthog
+DEBUG:    [08-12-2024 11:56:33] Starting component SimpleRateLimitEnforcer
+DEBUG:    [08-12-2024 11:56:33] Starting component LocalSegmentManager
+DEBUG:    [08-12-2024 11:56:33] Starting component LocalExecutor
+DEBUG:    [08-12-2024 11:56:33] Starting component SegmentAPI
+INFO:     [08-12-2024 11:56:33] Started server process [1]
+INFO:     [08-12-2024 11:56:33] Waiting for application startup.
+INFO:     [08-12-2024 11:56:33] Application startup complete.
+INFO:     [08-12-2024 11:56:33] Uvicorn running on http://localhost:8000 (Press CTRL+C to quit)
+INFO:     [08-12-2024 11:58:25] Shutting down
+INFO:     [08-12-2024 11:58:24] Waiting for application shutdown.
+DEBUG:    [08-12-2024 11:58:24] Stopping component System
+DEBUG:    [08-12-2024 11:58:24] Stopping component SegmentAPI
+DEBUG:    [08-12-2024 11:58:24] Stopping component LocalExecutor
+DEBUG:    [08-12-2024 11:58:24] Stopping component LocalSegmentManager
+DEBUG:    [08-12-2024 11:58:24] Stopping component SimpleRateLimitEnforcer
+DEBUG:    [08-12-2024 11:58:24] Stopping component Posthog
+DEBUG:    [08-12-2024 11:58:24] Stopping component SimpleQuotaEnforcer
+DEBUG:    [08-12-2024 11:58:24] Stopping component SqliteDB
+DEBUG:    [08-12-2024 11:58:24] Stopping component OpenTelemetryClient
+INFO:     [08-12-2024 11:58:24] Application shutdown complete.
+INFO:     [08-12-2024 11:58:24] Finished server process [1]
+WARNING:  [08-12-2024 11:58:27] chroma_server_nofile is set to 65535, but this is less than current soft limit of 1048576. chroma_server_nofile will not be set.
+INFO:     [08-12-2024 11:58:27] Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+DEBUG:    [08-12-2024 11:58:27] Starting component System
+DEBUG:    [08-12-2024 11:58:27] Starting component OpenTelemetryClient
+DEBUG:    [08-12-2024 11:58:27] Starting component SqliteDB
+DEBUG:    [08-12-2024 11:58:27] Starting component SimpleQuotaEnforcer
+DEBUG:    [08-12-2024 11:58:27] Starting component Posthog
+DEBUG:    [08-12-2024 11:58:27] Starting component SimpleRateLimitEnforcer
+DEBUG:    [08-12-2024 11:58:27] Starting component LocalSegmentManager
+DEBUG:    [08-12-2024 11:58:27] Starting component LocalExecutor
+DEBUG:    [08-12-2024 11:58:27] Starting component SegmentAPI
+INFO:     [08-12-2024 11:58:27] Started server process [1]
+INFO:     [08-12-2024 11:58:27] Waiting for application startup.
+INFO:     [08-12-2024 11:58:27] Application startup complete.
+INFO:     [08-12-2024 11:58:27] Uvicorn running on http://localhost:8000 (Press CTRL+C to quit)
+INFO:     [08-12-2024 12:10:38] Shutting down
+INFO:     [08-12-2024 12:10:38] Waiting for application shutdown.
+DEBUG:    [08-12-2024 12:10:38] Stopping component System
+DEBUG:    [08-12-2024 12:10:38] Stopping component SegmentAPI
+DEBUG:    [08-12-2024 12:10:38] Stopping component LocalExecutor
+DEBUG:    [08-12-2024 12:10:38] Stopping component LocalSegmentManager
+DEBUG:    [08-12-2024 12:10:38] Stopping component SimpleRateLimitEnforcer
+DEBUG:    [08-12-2024 12:10:38] Stopping component Posthog
+DEBUG:    [08-12-2024 12:10:38] Stopping component SimpleQuotaEnforcer
+DEBUG:    [08-12-2024 12:10:38] Stopping component SqliteDB
+DEBUG:    [08-12-2024 12:10:38] Stopping component OpenTelemetryClient
+INFO:     [08-12-2024 12:10:38] Application shutdown complete.
+INFO:     [08-12-2024 12:10:38] Finished server process [1]
+WARNING:  [08-12-2024 12:10:40] chroma_server_nofile is set to 65535, but this is less than current soft limit of 1048576. chroma_server_nofile will not be set.
+INFO:     [08-12-2024 12:10:41] Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+DEBUG:    [08-12-2024 12:10:41] Starting component System
+DEBUG:    [08-12-2024 12:10:41] Starting component OpenTelemetryClient
+DEBUG:    [08-12-2024 12:10:41] Starting component SqliteDB
+DEBUG:    [08-12-2024 12:10:41] Starting component SimpleQuotaEnforcer
+DEBUG:    [08-12-2024 12:10:41] Starting component Posthog
+DEBUG:    [08-12-2024 12:10:41] Starting component SimpleRateLimitEnforcer
+DEBUG:    [08-12-2024 12:10:41] Starting component LocalSegmentManager
+DEBUG:    [08-12-2024 12:10:41] Starting component LocalExecutor
+DEBUG:    [08-12-2024 12:10:41] Starting component SegmentAPI
+INFO:     [08-12-2024 12:10:41] Started server process [1]
+INFO:     [08-12-2024 12:10:41] Waiting for application startup.
+INFO:     [08-12-2024 12:10:41] Application startup complete.
+INFO:     [08-12-2024 12:10:41] Uvicorn running on http://localhost:8000 (Press CTRL+C to quit)
+INFO:     [08-12-2024 12:10:50] Shutting down
+INFO:     [08-12-2024 12:10:50] Waiting for application shutdown.
+DEBUG:    [08-12-2024 12:10:50] Stopping component System
+DEBUG:    [08-12-2024 12:10:50] Stopping component SegmentAPI
+DEBUG:    [08-12-2024 12:10:50] Stopping component LocalExecutor
+DEBUG:    [08-12-2024 12:10:50] Stopping component LocalSegmentManager
+DEBUG:    [08-12-2024 12:10:50] Stopping component SimpleRateLimitEnforcer
+DEBUG:    [08-12-2024 12:10:50] Stopping component Posthog
+DEBUG:    [08-12-2024 12:10:50] Stopping component SimpleQuotaEnforcer
+DEBUG:    [08-12-2024 12:10:50] Stopping component SqliteDB
+DEBUG:    [08-12-2024 12:10:50] Stopping component OpenTelemetryClient
+INFO:     [08-12-2024 12:10:50] Application shutdown complete.
+INFO:     [08-12-2024 12:10:50] Finished server process [1]
+WARNING:  [08-12-2024 12:14:15] chroma_server_nofile is set to 65535, but this is less than current soft limit of 1048576. chroma_server_nofile will not be set.
+INFO:     [08-12-2024 12:14:15] Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+DEBUG:    [08-12-2024 12:14:15] Starting component System
+DEBUG:    [08-12-2024 12:14:15] Starting component OpenTelemetryClient
+DEBUG:    [08-12-2024 12:14:15] Starting component SqliteDB
+DEBUG:    [08-12-2024 12:14:16] Starting component SimpleQuotaEnforcer
+DEBUG:    [08-12-2024 12:14:16] Starting component Posthog
+DEBUG:    [08-12-2024 12:14:16] Starting component SimpleRateLimitEnforcer
+DEBUG:    [08-12-2024 12:14:16] Starting component LocalSegmentManager
+DEBUG:    [08-12-2024 12:14:16] Starting component LocalExecutor
+DEBUG:    [08-12-2024 12:14:16] Starting component SegmentAPI
+INFO:     [08-12-2024 12:14:16] Started server process [1]
+INFO:     [08-12-2024 12:14:16] Waiting for application startup.
+INFO:     [08-12-2024 12:14:16] Application startup complete.
+INFO:     [08-12-2024 12:14:16] Uvicorn running on http://localhost:8000 (Press CTRL+C to quit)
+INFO:     [08-12-2024 12:16:03] Shutting down
+INFO:     [08-12-2024 12:16:03] Waiting for application shutdown.
+DEBUG:    [08-12-2024 12:16:03] Stopping component System
+DEBUG:    [08-12-2024 12:16:03] Stopping component SegmentAPI
+DEBUG:    [08-12-2024 12:16:03] Stopping component LocalExecutor
+DEBUG:    [08-12-2024 12:16:03] Stopping component LocalSegmentManager
+DEBUG:    [08-12-2024 12:16:03] Stopping component SimpleRateLimitEnforcer
+DEBUG:    [08-12-2024 12:16:03] Stopping component Posthog
+DEBUG:    [08-12-2024 12:16:03] Stopping component SimpleQuotaEnforcer
+DEBUG:    [08-12-2024 12:16:03] Stopping component SqliteDB
+DEBUG:    [08-12-2024 12:16:03] Stopping component OpenTelemetryClient
+INFO:     [08-12-2024 12:16:03] Application shutdown complete.
+INFO:     [08-12-2024 12:16:03] Finished server process [1]
+WARNING:  [08-12-2024 12:16:15] chroma_server_nofile is set to 65535, but this is less than current soft limit of 1048576. chroma_server_nofile will not be set.
+INFO:     [08-12-2024 12:16:15] Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+DEBUG:    [08-12-2024 12:16:15] Starting component System
+DEBUG:    [08-12-2024 12:16:15] Starting component OpenTelemetryClient
+DEBUG:    [08-12-2024 12:16:15] Starting component SqliteDB
+DEBUG:    [08-12-2024 12:16:15] Starting component SimpleQuotaEnforcer
+DEBUG:    [08-12-2024 12:16:15] Starting component Posthog
+DEBUG:    [08-12-2024 12:16:15] Starting component SimpleRateLimitEnforcer
+DEBUG:    [08-12-2024 12:16:15] Starting component LocalSegmentManager
+DEBUG:    [08-12-2024 12:16:15] Starting component LocalExecutor
+DEBUG:    [08-12-2024 12:16:15] Starting component SegmentAPI
+INFO:     [08-12-2024 12:16:15] Started server process [1]
+INFO:     [08-12-2024 12:16:15] Waiting for application startup.
+INFO:     [08-12-2024 12:16:15] Application startup complete.
+INFO:     [08-12-2024 12:16:15] Uvicorn running on http://localhost:8000 (Press CTRL+C to quit)
+INFO:     [08-12-2024 12:16:30] Shutting down
+INFO:     [08-12-2024 12:16:30] Waiting for application shutdown.
+DEBUG:    [08-12-2024 12:16:30] Stopping component System
+DEBUG:    [08-12-2024 12:16:30] Stopping component SegmentAPI
+DEBUG:    [08-12-2024 12:16:30] Stopping component LocalExecutor
+DEBUG:    [08-12-2024 12:16:30] Stopping component LocalSegmentManager
+DEBUG:    [08-12-2024 12:16:30] Stopping component SimpleRateLimitEnforcer
+DEBUG:    [08-12-2024 12:16:30] Stopping component Posthog
+DEBUG:    [08-12-2024 12:16:30] Stopping component SimpleQuotaEnforcer
+DEBUG:    [08-12-2024 12:16:30] Stopping component SqliteDB
+DEBUG:    [08-12-2024 12:16:30] Stopping component OpenTelemetryClient
+INFO:     [08-12-2024 12:16:30] Application shutdown complete.
+INFO:     [08-12-2024 12:16:30] Finished server process [1]
+WARNING:  [08-12-2024 12:17:02] chroma_server_nofile is set to 65535, but this is less than current soft limit of 1048576. chroma_server_nofile will not be set.
+INFO:     [08-12-2024 12:17:02] Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+DEBUG:    [08-12-2024 12:17:02] Starting component System
+DEBUG:    [08-12-2024 12:17:02] Starting component OpenTelemetryClient
+DEBUG:    [08-12-2024 12:17:02] Starting component SqliteDB
+DEBUG:    [08-12-2024 12:17:02] Starting component SimpleQuotaEnforcer
+DEBUG:    [08-12-2024 12:17:02] Starting component Posthog
+DEBUG:    [08-12-2024 12:17:02] Starting component SimpleRateLimitEnforcer
+DEBUG:    [08-12-2024 12:17:02] Starting component LocalSegmentManager
+DEBUG:    [08-12-2024 12:17:02] Starting component LocalExecutor
+DEBUG:    [08-12-2024 12:17:02] Starting component SegmentAPI
+INFO:     [08-12-2024 12:17:02] Started server process [1]
+INFO:     [08-12-2024 12:17:02] Waiting for application startup.
+INFO:     [08-12-2024 12:17:02] Application startup complete.
+INFO:     [08-12-2024 12:17:02] Uvicorn running on http://localhost:8000 (Press CTRL+C to quit)
+INFO:     [08-12-2024 12:17:18] Shutting down
+INFO:     [08-12-2024 12:17:18] Waiting for application shutdown.
+DEBUG:    [08-12-2024 12:17:18] Stopping component System
+DEBUG:    [08-12-2024 12:17:18] Stopping component SegmentAPI
+DEBUG:    [08-12-2024 12:17:18] Stopping component LocalExecutor
+DEBUG:    [08-12-2024 12:17:18] Stopping component LocalSegmentManager
+DEBUG:    [08-12-2024 12:17:18] Stopping component SimpleRateLimitEnforcer
+DEBUG:    [08-12-2024 12:17:18] Stopping component Posthog
+DEBUG:    [08-12-2024 12:17:18] Stopping component SimpleQuotaEnforcer
+DEBUG:    [08-12-2024 12:17:18] Stopping component SqliteDB
+DEBUG:    [08-12-2024 12:17:18] Stopping component OpenTelemetryClient
+INFO:     [08-12-2024 12:17:18] Application shutdown complete.
+INFO:     [08-12-2024 12:17:18] Finished server process [1]
+WARNING:  [08-12-2024 12:20:52] chroma_server_nofile is set to 65535, but this is less than current soft limit of 1048576. chroma_server_nofile will not be set.
+INFO:     [08-12-2024 12:20:52] Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+DEBUG:    [08-12-2024 12:20:52] Starting component System
+DEBUG:    [08-12-2024 12:20:52] Starting component OpenTelemetryClient
+DEBUG:    [08-12-2024 12:20:52] Starting component SqliteDB
+DEBUG:    [08-12-2024 12:20:52] Starting component SimpleQuotaEnforcer
+DEBUG:    [08-12-2024 12:20:52] Starting component Posthog
+DEBUG:    [08-12-2024 12:20:52] Starting component SimpleRateLimitEnforcer
+DEBUG:    [08-12-2024 12:20:52] Starting component LocalSegmentManager
+DEBUG:    [08-12-2024 12:20:52] Starting component LocalExecutor
+DEBUG:    [08-12-2024 12:20:52] Starting component SegmentAPI
+INFO:     [08-12-2024 12:20:52] Started server process [1]
+INFO:     [08-12-2024 12:20:52] Waiting for application startup.
+INFO:     [08-12-2024 12:20:52] Application startup complete.
+INFO:     [08-12-2024 12:20:52] Uvicorn running on http://localhost:8000 (Press CTRL+C to quit)
+INFO:     [08-12-2024 12:23:08] Shutting down
+INFO:     [08-12-2024 12:23:08] Waiting for application shutdown.
+DEBUG:    [08-12-2024 12:23:08] Stopping component System
+DEBUG:    [08-12-2024 12:23:08] Stopping component SegmentAPI
+DEBUG:    [08-12-2024 12:23:08] Stopping component LocalExecutor
+DEBUG:    [08-12-2024 12:23:08] Stopping component LocalSegmentManager
+DEBUG:    [08-12-2024 12:23:08] Stopping component SimpleRateLimitEnforcer
+DEBUG:    [08-12-2024 12:23:08] Stopping component Posthog
+DEBUG:    [08-12-2024 12:23:08] Stopping component SimpleQuotaEnforcer
+DEBUG:    [08-12-2024 12:23:08] Stopping component SqliteDB
+DEBUG:    [08-12-2024 12:23:08] Stopping component OpenTelemetryClient
+INFO:     [08-12-2024 12:23:08] Application shutdown complete.
+INFO:     [08-12-2024 12:23:08] Finished server process [1]
+WARNING:  [08-12-2024 12:23:10] chroma_server_nofile is set to 65535, but this is less than current soft limit of 1048576. chroma_server_nofile will not be set.
+INFO:     [08-12-2024 12:23:11] Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+DEBUG:    [08-12-2024 12:23:11] Starting component System
+DEBUG:    [08-12-2024 12:23:11] Starting component OpenTelemetryClient
+DEBUG:    [08-12-2024 12:23:11] Starting component SqliteDB
+DEBUG:    [08-12-2024 12:23:11] Starting component SimpleQuotaEnforcer
+DEBUG:    [08-12-2024 12:23:11] Starting component Posthog
+DEBUG:    [08-12-2024 12:23:11] Starting component SimpleRateLimitEnforcer
+DEBUG:    [08-12-2024 12:23:11] Starting component LocalSegmentManager
+DEBUG:    [08-12-2024 12:23:11] Starting component LocalExecutor
+DEBUG:    [08-12-2024 12:23:11] Starting component SegmentAPI
+INFO:     [08-12-2024 12:23:11] Started server process [1]
+INFO:     [08-12-2024 12:23:11] Waiting for application startup.
+INFO:     [08-12-2024 12:23:11] Application startup complete.
+INFO:     [08-12-2024 12:23:11] Uvicorn running on http://localhost:8000 (Press CTRL+C to quit)
+INFO:     [08-12-2024 12:27:09] Shutting down
+INFO:     [08-12-2024 12:27:09] Waiting for application shutdown.
+DEBUG:    [08-12-2024 12:27:09] Stopping component System
+DEBUG:    [08-12-2024 12:27:09] Stopping component SegmentAPI
+DEBUG:    [08-12-2024 12:27:09] Stopping component LocalExecutor
+DEBUG:    [08-12-2024 12:27:09] Stopping component LocalSegmentManager
+DEBUG:    [08-12-2024 12:27:09] Stopping component SimpleRateLimitEnforcer
+DEBUG:    [08-12-2024 12:27:09] Stopping component Posthog
+DEBUG:    [08-12-2024 12:27:09] Stopping component SimpleQuotaEnforcer
+DEBUG:    [08-12-2024 12:27:09] Stopping component SqliteDB
+DEBUG:    [08-12-2024 12:27:09] Stopping component OpenTelemetryClient
+INFO:     [08-12-2024 12:27:09] Application shutdown complete.
+INFO:     [08-12-2024 12:27:09] Finished server process [1]
+WARNING:  [08-12-2024 12:27:20] chroma_server_nofile is set to 65535, but this is less than current soft limit of 1048576. chroma_server_nofile will not be set.
+INFO:     [08-12-2024 12:27:20] Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+DEBUG:    [08-12-2024 12:27:20] Starting component System
+DEBUG:    [08-12-2024 12:27:20] Starting component OpenTelemetryClient
+DEBUG:    [08-12-2024 12:27:20] Starting component SqliteDB
+DEBUG:    [08-12-2024 12:27:20] Starting component SimpleQuotaEnforcer
+DEBUG:    [08-12-2024 12:27:20] Starting component Posthog
+DEBUG:    [08-12-2024 12:27:20] Starting component SimpleRateLimitEnforcer
+DEBUG:    [08-12-2024 12:27:20] Starting component LocalSegmentManager
+DEBUG:    [08-12-2024 12:27:20] Starting component LocalExecutor
+DEBUG:    [08-12-2024 12:27:20] Starting component SegmentAPI
+INFO:     [08-12-2024 12:27:20] Started server process [1]
+INFO:     [08-12-2024 12:27:20] Waiting for application startup.
+INFO:     [08-12-2024 12:27:20] Application startup complete.
+INFO:     [08-12-2024 12:27:20] Uvicorn running on http://localhost:8000 (Press CTRL+C to quit)

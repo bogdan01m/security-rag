@@ -1,12 +1,15 @@
 import chromadb
 
-from langchain.vectorstores import Chroma
-from langchain.embeddings import HuggingFaceEmbeddings
+from langchain_chroma import Chroma
+from langchain_huggingface import HuggingFaceEmbeddings
+
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains.retrieval import create_retrieval_chain
 
 from langchain_mistralai.chat_models import ChatMistralAI
 from langchain_core.output_parsers import JsonOutputParser
+
+from llm.logger import logger
 
 
 class SecurityRAG:
@@ -21,7 +24,6 @@ class SecurityRAG:
     ):
         self.db_client = chromadb.Client(
             chromadb.Settings(
-                chroma_api_impl="rest",
                 chroma_server_host=chroma_host,
                 chroma_server_http_port=chroma_port,
             )
@@ -31,10 +33,11 @@ class SecurityRAG:
             model_name="mistral-large-latest",
             temperature=0.5,
         )
+        logger.info(f"Mistal key: {mistral_api[:10]}")
         self.embeddings_model = HuggingFaceEmbeddings(model_name=embeddings)
         self.vector_store = Chroma(
             client=self.db_client,
-            embedding_function=self.embeddings_model.embed_documents,
+            embedding_function=self.embeddings_model,
         )
         self.document_chain = create_stuff_documents_chain(self.llm_client, prompt)
         self.retrieval_chain = create_retrieval_chain(
@@ -50,6 +53,7 @@ class SecurityRAG:
                 "model_response": model_response,
             }
         )
+        logger.info(response["answer"])
         result = self.output_parser.parse(response["answer"])
         return result
 
@@ -60,5 +64,7 @@ class SecurityRAG:
                 "model_response": model_response,
             }
         )
+        logger.info(response["answer"])
         result = self.output_parser.parse(response["answer"])
+        logger.info(result)
         return result
