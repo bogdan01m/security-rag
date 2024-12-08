@@ -1,0 +1,34 @@
+services:
+  chroma:
+    build:
+      context: ./services/chroma
+    container_name: chroma
+    env_file:
+      - .env
+    ports:
+      - "${CHROMA_PORT}:8000"
+    volumes:
+      - chroma_data:/app/llm_service/chroma_vector_store
+      - ./services/chroma:/app
+
+  llm:
+    build:
+      context: ./services/llm
+    container_name: llm_api
+    env_file:
+      - .env
+    ports:
+      - "${LLM_PORT}:8000"
+    environment:
+      - API_KEY=${API_KEY}
+      - CHROMA_HOST=${CHROMA_HOST}
+      - CHROMA_PORT=${CHROMA_PORT}
+    depends_on:
+      - chroma
+
+volumes:
+  chroma_data:
+
+networks:
+  sec_rag_network:
+    driver: bridge

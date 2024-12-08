@@ -18,6 +18,7 @@ langchain-huggingface = "^0.1.2"
 chromadb = "^0.5.23"
 langchain-mistralai = "^0.2.3"
 langchain-community = "^0.3.10"
+langchain-chroma = "^0.1.4"
 
 
 [build-system]

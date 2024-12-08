@@ -1,0 +1,6 @@
+torch @ https://download.pytorch.org/whl/cpu-cxx11-abi/torch-2.5.1%2Bcpu.cxx11.abi-cp310-cp310-linux_x86_64.whl
+langchain_community==0.3.10
+langchain_text_splitters==0.3.2
+langchain_huggingface==0.1.2
+langchain-community==0.3.10
+langchain_chroma==0.1.4
