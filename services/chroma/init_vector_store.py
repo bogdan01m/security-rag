@@ -13,7 +13,8 @@ def initialize_vector_store(csv_file_path: str, persist_directory: str, debug: b
     logger.info("Инициализация нового векторного хранилища")
 
     embeddings = HuggingFaceEmbeddings(
-        model_name="sentence-transformers/all-mpnet-base-v2",
+        # model_name="sentence-transformers/all-mpnet-base-v2",
+        model_name="sentence-transformers/all-MiniLM-L6-v2",
         show_progress=True,
     )
 
@@ -35,6 +36,7 @@ def initialize_vector_store(csv_file_path: str, persist_directory: str, debug: b
 
     if debug:
         data = data[:100]
+
     vector_store.add_documents(data)
 
     logger.info("Векторное хранилище успешно создано и сохранено.")

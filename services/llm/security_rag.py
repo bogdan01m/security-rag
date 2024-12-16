@@ -14,13 +14,14 @@ from llm.logger import logger
 
 
 class SecurityRAG:
+
     def __init__(
         self,
         chroma_host: str,
         chroma_port: int,
         mistral_api: str,
         prompt: str,
-        embeddings="sentence-transformers/all-mpnet-base-v2",
+        embeddings="sentence-transformers/all-MiniLM-L6-v2",
         api_rate_limit=1.0,  # Calls per second (default: 1 call per second)
     ):
         self.db_client = chromadb.Client(
