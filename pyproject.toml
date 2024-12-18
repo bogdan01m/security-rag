@@ -13,7 +13,6 @@ matplotlib = "^3.9.3"
 langchain = "^0.3.10"
 fastapi = "^0.115.6"
 python-dotenv = "^1.0.1"
-torch = {url = "https://download.pytorch.org/whl/cpu-cxx11-abi/torch-2.5.1%2Bcpu.cxx11.abi-cp310-cp310-linux_x86_64.whl"}
 langchain-huggingface = "^0.1.2"
 chromadb = "^0.5.23"
 langchain-mistralai = "^0.2.3"
@@ -21,8 +20,8 @@ langchain-community = "^0.3.10"
 langchain-chroma = "^0.1.4"
 datasets = "^3.2.0"
 langsmith = "^0.2.3"
-huggingface-hub = {extras = ["cli"], version = "^0.27.0"}
 slowapi = "^0.1.9"
+torch = "2.5.1"
 
 
 [build-system]
