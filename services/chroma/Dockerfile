@@ -19,7 +19,7 @@ ENV CSV_FILE_PATH=documents.csv
 ENV CHROMA_PERSIST_DIRECTORY=llm_service/chroma_vector_store
 
 # Download the CSV file and initialize the vector store
-RUN sh load_data.sh && python init_vector_store.py --csv_file_path $CSV_FILE_PATH --persist_directory $CHROMA_PERSIST_DIRECTORY --debug
+RUN sh load_data.sh && python init_vector_store.py --csv_file_path $CSV_FILE_PATH --persist_directory $CHROMA_PERSIST_DIRECTORY
 
 # Stage 2: Final stage
 FROM python:3.10-slim
