@@ -3,9 +3,9 @@ import requests
 
 
 from fastapi import HTTPException
-from datasets import load_dataset
 
 from langsmith.client import Client
+from langsmith import traceable
 
 from dotenv import load_dotenv
 
@@ -29,24 +29,30 @@ endpoint_url = (
 def prompt_evaluator(run, example):
     return {
         "name": "prompt",
-        "score": int(run.outputs.get(KEYS[0], "ERR") == example.outputs.get(KEYS[0], "ERR_")),
+        "score": int(
+            run.outputs.get(KEYS[0], "ERR") == example.outputs.get(KEYS[0], "ERR_")
+        ),
     }
 
 
 def refusal_evaluator(run, example):
     return {
         "name": "refusal",
-        "score": int(run.outputs.get(KEYS[1], "ERR") == example.outputs.get(KEYS[1], "ERR_")),
+        "score": int(
+            run.outputs.get(KEYS[1], "ERR") == example.outputs.get(KEYS[1], "ERR_")
+        ),
     }
 
 
 def response_evaluator(run, example):
     return {
         "name": "response",
-        "score": int(run.outputs.get(KEYS[2], "ERR") == example.outputs.get(KEYS[2], "ERR_")),
+        "score": int(
+            run.outputs.get(KEYS[2], "ERR") == example.outputs.get(KEYS[2], "ERR_")
+        ),
     }
 
-
+@traceable
 def call_security_rag(example):
     user_id = 1  # Use the index as a unique user_id
     user_request = example["prompt"]
@@ -67,13 +73,9 @@ def call_security_rag(example):
         response = response.json()
 
     except HTTPException:
-        response = {
-            "prompt_harm_label": "ERR",
-            "response_refusal_label": "ERR",
-            "response_harm_label": "ERR",
-        }
+        response = {}
 
-    return {k: response[k] for k in KEYS}
+    return {k: response.get(k, None) for k in KEYS}
 
 
 def main():
