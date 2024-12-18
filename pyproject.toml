@@ -22,6 +22,7 @@ langchain-chroma = "^0.1.4"
 datasets = "^3.2.0"
 langsmith = "^0.2.3"
 huggingface-hub = {extras = ["cli"], version = "^0.27.0"}
+slowapi = "^0.1.9"
 
 
 [build-system]
