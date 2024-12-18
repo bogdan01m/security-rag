@@ -21,8 +21,7 @@ class SecurityRAG:
         chroma_port: int,
         mistral_api: str,
         prompt: str,
-        embeddings="sentence-transformers/all-MiniLM-L6-v2",
-        api_rate_limit=1.0,  # Calls per second (default: 1 call per second)
+        embeddings="sentence-transformers/all-mpnet-base-v2",
     ):
         self.db_client = chromadb.Client(
             chromadb.Settings(
@@ -46,23 +45,8 @@ class SecurityRAG:
             self.vector_store.as_retriever(), self.document_chain
         )
         self.output_parser = JsonOutputParser()
-        self.api_rate_limit = api_rate_limit
-        self.last_api_call = 0  # Timestamp of the last API call
 
-    def _rate_limit(self):
-        """
-        Ensures API calls adhere to the rate limit.
-        """
-        current_time = time.time()
-        elapsed = current_time - self.last_api_call
-
-        if elapsed < 1.0 / self.api_rate_limit:
-            time.sleep(1.0 / self.api_rate_limit - elapsed)
-
-        self.last_api_call = time.time()
-
-    def run(self, user_prompt: str, model_response: str):
-        self._rate_limit()  # Apply rate limiting
+    def run(self, user_prompt: str, model_response: str):  # Apply rate limiting
         response = self.retrieval_chain.invoke(
             {
                 "input": user_prompt,
@@ -73,8 +57,9 @@ class SecurityRAG:
         result = self.output_parser.parse(response["answer"])
         return result
 
-    async def arun(self, user_prompt: str, model_response: str):
-        self._rate_limit()  # Apply rate limiting before asynchronous call
+    async def arun(
+        self, user_prompt: str, model_response: str
+    ):  # Apply rate limiting before asynchronous call
         response = await self.retrieval_chain.ainvoke(
             {
                 "input": user_prompt,
