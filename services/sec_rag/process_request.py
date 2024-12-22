@@ -3,11 +3,11 @@ from dotenv import load_dotenv
 
 from fastapi import APIRouter
 
-from llm.logger import logger
-from llm.security_rag import SecurityRAG
-from llm.prompt import SECURITY_PROMPT_V1
+from services.sec_rag.logger import logger
+from services.sec_rag.security_rag import SecurityRAG
+from services.sec_rag.prompt import SECURITY_PROMPT_V1
 
-from llm.models import UserRequest, RAGResponse
+from services.sec_rag.models import UserRequest, RAGResponse
 
 
 load_dotenv()

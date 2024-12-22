@@ -33,3 +33,6 @@ llm_service/chroma_vector_store/
 
 #ноутбук
 notebooks/data.ipynb
+example.log
+services/tg_bot/bot_copy.py
+services/base_llm/llm copy.py
