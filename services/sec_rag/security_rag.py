@@ -10,7 +10,7 @@ from langchain.chains.retrieval import create_retrieval_chain
 
 from langchain_core.output_parsers import JsonOutputParser
 
-from llm.logger import logger
+from services.sec_rag.logger import logger
 
 
 class SecurityRAG:

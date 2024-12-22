@@ -53,12 +53,12 @@ if __name__ == "__main__":
         required=True,
         help="Directory to persist the vector store",
     )
-    parser.add_argument(
-        "--debug",
-        type=bool,
-        action=argparse.BooleanOptionalAction,
-        help="Use only 100 prompts to build DB",
-    )
+    # parser.add_argument(
+    #     "--debug",
+    #     type=bool,
+    #     action=argparse.BooleanOptionalAction,
+    #     help="Use only 100 prompts to build DB",
+    # )
 
     args = parser.parse_args()
 
