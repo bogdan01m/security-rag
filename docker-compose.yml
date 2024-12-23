@@ -14,10 +14,11 @@ services:
       - chroma_data:/app/llm_service/chroma_vector_store
       - ./services/chroma:/app
 
-  llm:
+
+  sec_rag:
     build:
-      context: ./services/llm
-    container_name: llm_api
+      context: ./services/sec_rag
+    container_name: sec_rag_api
     env_file:
       - .env
     ports:
@@ -29,8 +30,35 @@ services:
     depends_on:
       - chroma
 
+  base_llm:
+    build:
+      context: ./services/base_llm
+    container_name: base_llm_api
+    env_file:
+      - .env
+    ports:
+      - "${BASE_LLM_PORT}:8002"
+    environment:
+      - OLLAMA_HOST=${OLLAMA_HOST}
+      - OLLAMA_PORT=${OLLAMA_PORT}
+    depends_on:
+      - ollama
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    env_file:
+      - .env
+    environment:
+      - OLLAMA_DATA=/root/.ollama
+    volumes:
+      - ollama_data:/root/.ollama
+    ports:
+      - "${OLLAMA_PORT}:11435"
+
 volumes:
   chroma_data:
+  ollama_data:
 
 networks:
   sec_rag_network:
