@@ -27,7 +27,7 @@ security_rag = SecurityRAG(
 logger.info("Successfully initialized SecurityRAG")
 
 
-@router.post("/process_request/")
+@router.post("/process_request_with_response/")
 async def process_request(request: UserRequest) -> RAGResponse:
     user_id = request.user_id
     security_rag_response = await security_rag.arun(**request.as_input())
