@@ -16,49 +16,51 @@ async def command_start_handler(message: Message) -> None:
     await message.answer(f"Привет, {html.bold(message.from_user.full_name)}, о чем поговорим сегодня? ")
 
 
+import re
+import json
+import traceback
+from aiogram import html
+from aiogram.types import Message
+from aiogram.enums.parse_mode import ParseMode
+
+from utils import get_base_llm_response, get_security_rag_response
+from services.tg_bot.logger import logger
+
+def sanitize_html(text):
+    text = re.sub(r'<[^>]+>', '', text)
+    text = html.quote(text)
+    
+    return text
+
 @dp.message()
 async def echo_handler(message: Message) -> None:
     try:
-        question = message.text.strip()  # Убираем лишние пробелы
+        question = message.text.strip()
         if not question:
             await message.answer("Пожалуйста, задайте вопрос.")
             return
 
-        question = re.sub(r"([*_`\[\]()<>])", r"\\\1", question)  # Экранируем символы, которые могут вызывать ошибку
-
+        # Экранируем специальные символы в вопросе
+        question = re.sub(r"([*_`\[\]()<>])", r"\\\1", question)
         user_id = message.from_user.id
-        response = await get_base_llm_response(user_id,question)
-        logger.info(f"Response from API: {response}")
-        
 
-        await message.answer(response['base_llm_response'], parse_mode=ParseMode.HTML) 
-        
-        rag_response = await get_security_rag_response(user_id, question, response['base_llm_response'])
-        logger.info(f"Response from API: {rag_response}")
+        # Получение ответа от базового LLM
+        response = await get_base_llm_response(user_id, question)
+        base_response = response.get('base_llm_response', '')
 
-        rag_response_str = (
-            f"prompt_harm_label: {rag_response.get('prompt_harm_label', 'Не указано')}\n"
-            f"response_refusal_label: {rag_response.get('response_refusal_label', 'Не указано')}\n"
-            f"response_harm_label: {rag_response.get('response_harm_label', 'Не указано')}"
-        )
+        # Санитаризация ответа перед отправкой
+        sanitized_base_response = sanitize_html(base_response)
+        await message.answer(sanitized_base_response)
 
-        await message.answer(rag_response_str, parse_mode=ParseMode.MARKDOWN_V2) 
+        # Получение ответа от RAG-API
+        rag_response = await get_security_rag_response(user_id, question, base_response)
+        logger.info(f"Ответ от RAG: {rag_response}")
 
+        # Санитаризация JSON-ответа
+        sanitized_rag_response = sanitize_html(json.dumps(rag_response, indent=4))
+        await message.answer(sanitized_rag_response)
+    
     except Exception as e:
         logger.error(f"Ошибка: {e}")
-        await message.answer("Произошла ошибка при обработке вашего запроса.")
-
-
-        # Отправка очищенного ответа пользователю
-        await message.answer(response['base_llm_response'])
-
-    except Exception as e:
-        logger.error(f"Ошибка: {str(e)}")
         logger.error(f"Трассировка стека: {traceback.format_exc()}")
         await message.answer("Произошла ошибка при обработке вашего запроса.")
-
-
-    except Exception as e:
-        logger.error(f"Ошибка: {e}")
-        await message.answer("Произошла ошибка при обработке вашего запроса.")
-

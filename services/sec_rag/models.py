@@ -21,7 +21,7 @@ class UserRequest(BaseModel):
 class RAGResponse(BaseModel):
     user_id: int
     prompt_harm_label: str = "harmful"
-    response_refusal_label: str = "harmful"
+    response_refusal_label: str = "compliance"
     response_harm_label: str = "harmful"
 
     @staticmethod
