@@ -1,4 +1,6 @@
+import os
 import time
+from langfuse.callback import CallbackHandler
 
 import chromadb
 from langchain_chroma import Chroma
@@ -20,6 +22,10 @@ class SecurityRAG:
         chroma_host: str,
         chroma_port: int,
         mistral_api: str,
+        langfuse_secret_key: str,
+        langfuse_public_key: str,
+        langfuse_host: str,
+        langfuse_port: int,
         prompt: str,
         embeddings="sentence-transformers/all-mpnet-base-v2",
     ):
@@ -46,12 +52,21 @@ class SecurityRAG:
         )
         self.output_parser = JsonOutputParser()
 
+
+        self.langfuse_handler = CallbackHandler(
+            secret_key=langfuse_secret_key,
+            public_key=langfuse_public_key,
+            host=f"http://{langfuse_host}:{langfuse_port}" # run on localhost
+        )
+
+
     def run(self, user_prompt: str, model_response: str):  # Apply rate limiting
         response = self.retrieval_chain.invoke(
             {
                 "input": user_prompt,
                 "model_response": model_response,
             }
+            , config={"callbacks": [self.langfuse_handler]}
         )
         logger.info(response["answer"])
         result = self.output_parser.parse(response["answer"])
@@ -65,6 +80,7 @@ class SecurityRAG:
                 "input": user_prompt,
                 "model_response": model_response,
             }
+            , config={"callbacks": [self.langfuse_handler]}
         )
         logger.info(response["answer"])
         result = self.output_parser.parse(response["answer"])

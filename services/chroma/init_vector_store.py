@@ -62,4 +62,4 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    initialize_vector_store(args.csv_file_path, args.persist_directory, args.debug)
+    initialize_vector_store(args.csv_file_path, args.persist_directory, args.debug or False)
