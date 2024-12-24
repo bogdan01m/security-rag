@@ -36,3 +36,6 @@ notebooks/data.ipynb
 example.log
 services/tg_bot/bot_copy.py
 services/base_llm/llm copy.py
+
+services/chroma/vector_store/*.bin
+services/chroma/vector_store/*.sqlite3
