@@ -8,12 +8,17 @@ services:
     environment:
       - CHROMA_PERSIST_DIRECTORY=${CHROMA_PERSIST_DIRECTORY}
       - CSV_FILE_PATH=${CSV_FILE_PATH}
+      - NVIDIA_VISIBLE_DEVICES=0  # GPU Index
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
     ports:
       - "${CHROMA_PORT}:8000"
     volumes:
       - chroma_data:/app/llm_service/chroma_vector_store
       - ./services/chroma:/app
+    
+    runtime: nvidia
 
+      
 
   sec_rag:
     build:
@@ -27,8 +32,14 @@ services:
       - MISTRAL_API_KEY=${MISTRAL_API_KEY}
       - CHROMA_HOST=${CHROMA_HOST}
       - CHROMA_PORT=${CHROMA_PORT}
+      - NVIDIA_VISIBLE_DEVICES=0  # GPU Index
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
     depends_on:
       - chroma
+    runtime: nvidia
+
+
+
 
   base_llm:
     build:
@@ -44,17 +55,20 @@ services:
     depends_on:
       - ollama
 
+
+
   ollama:
     image: ollama/ollama:latest
     container_name: ollama
-    env_file:
-      - .env
     environment:
       - OLLAMA_DATA=/root/.ollama
+      - NVIDIA_VISIBLE_DEVICES=0  # GPU Inde
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
     volumes:
       - ollama_data:/root/.ollama
     ports:
       - "${OLLAMA_PORT}:11435"
+    runtime: nvidia
 
 volumes:
   chroma_data:
