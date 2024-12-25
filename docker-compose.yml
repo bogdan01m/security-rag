@@ -22,7 +22,8 @@ services:
 
   sec_rag:
     build:
-      context: ./services/sec_rag
+      context: .
+      dockerfile: services/sec_rag/Dockerfile  
     container_name: sec_rag_api
     env_file:
       - .env
@@ -43,7 +44,8 @@ services:
 
   base_llm:
     build:
-      context: ./services/base_llm
+      context: .
+      dockerfile: services/base_llm/Dockerfile  
     container_name: base_llm_api
     env_file:
       - .env
@@ -60,15 +62,31 @@ services:
   ollama:
     image: ollama/ollama:latest
     container_name: ollama
+    env_file:
+      - .env
     environment:
       - OLLAMA_DATA=/root/.ollama
-      - NVIDIA_VISIBLE_DEVICES=0  # GPU Inde
+      - NVIDIA_VISIBLE_DEVICES=0  # GPU Index
       - NVIDIA_DRIVER_CAPABILITIES=compute,utility
     volumes:
       - ollama_data:/root/.ollama
     ports:
       - "${OLLAMA_PORT}:11435"
     runtime: nvidia
+
+  telegram_bot:
+    build:
+      context: .
+      dockerfile: services/tg_bot/Dockerfile  
+    container_name: telegram_bot
+    env_file:
+      - .env  
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}  
+    restart: always  
+    volumes:
+      - ./services/tg_bot:/app  
+
 
 volumes:
   chroma_data:

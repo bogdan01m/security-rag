@@ -1,3 +1,11 @@
+import re
+import json
+import traceback
+from aiogram import html
+from aiogram.types import Message
+from aiogram.enums.parse_mode import ParseMode
+from utils import get_base_llm_response, get_security_rag_response
+from services.tg_bot.logger import logger
 from aiogram import Dispatcher
 from aiogram.filters import CommandStart
 from aiogram.types import Message
@@ -15,16 +23,6 @@ dp = Dispatcher()
 async def command_start_handler(message: Message) -> None:
     await message.answer(f"Привет, {html.bold(message.from_user.full_name)}, о чем поговорим сегодня? ")
 
-
-import re
-import json
-import traceback
-from aiogram import html
-from aiogram.types import Message
-from aiogram.enums.parse_mode import ParseMode
-
-from utils import get_base_llm_response, get_security_rag_response
-from services.tg_bot.logger import logger
 
 def sanitize_html(text):
     text = re.sub(r'<[^>]+>', '', text)
