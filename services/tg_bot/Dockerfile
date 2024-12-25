@@ -11,10 +11,10 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the application code into the container
-COPY . ./sec_rag
+COPY . ./tg_bot
 
 # Expose the port the app runs on
 EXPOSE 8000
 
 # Command to run the application
-CMD ["uvicorn", "sec_rag.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["python", "tg_bot/bot.py"]
