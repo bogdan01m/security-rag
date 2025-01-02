@@ -4,7 +4,7 @@ from langfuse.callback import CallbackHandler
 
 import chromadb
 from langchain_chroma import Chroma
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_ollama import OllamaEmbeddings
 from langchain_mistralai.chat_models import ChatMistralAI
 
 from langchain.chains.combine_documents import create_stuff_documents_chain
@@ -27,7 +27,7 @@ class SecurityRAG:
         langfuse_host: str,
         langfuse_port: int,
         prompt: str,
-        embeddings="sentence-transformers/all-mpnet-base-v2",
+        embeddings="nomic-embed-text"####"sentence-transformers/all-mpnet-base-v2",
     ):
         self.db_client = chromadb.Client(
             chromadb.Settings(
@@ -38,17 +38,18 @@ class SecurityRAG:
         self.llm_client = ChatMistralAI(
             mistral_api_key=mistral_api,
             model_name="mistral-large-latest",
-            temperature=0.5,
+            temperature=0.5, 
+            max_tokens=128
         )
         logger.info(f"Mistal key: {mistral_api[:10]}")
-        self.embeddings_model = HuggingFaceEmbeddings(model_name=embeddings)
+        self.embeddings_model = OllamaEmbeddings(model=embeddings)
         self.vector_store = Chroma(
             client=self.db_client,
             embedding_function=self.embeddings_model,
         )
         self.document_chain = create_stuff_documents_chain(self.llm_client, prompt)
         self.retrieval_chain = create_retrieval_chain(
-            self.vector_store.as_retriever(), self.document_chain
+            self.vector_store.as_retriever(search_type='mmr'), self.document_chain
         )
         self.output_parser = JsonOutputParser()
 
@@ -68,7 +69,7 @@ class SecurityRAG:
             }
             , config={"callbacks": [self.langfuse_handler]}
         )
-        logger.info(response["answer"])
+        logger.info(response)
         result = self.output_parser.parse(response["answer"])
         return result
 
@@ -82,7 +83,7 @@ class SecurityRAG:
             }
             , config={"callbacks": [self.langfuse_handler]}
         )
-        logger.info(response["answer"])
+        logger.info(response)
         result = self.output_parser.parse(response["answer"])
         logger.info(result)
         return result

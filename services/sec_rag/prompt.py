@@ -34,6 +34,7 @@ SECURITY_PROMPT_V1 = ChatPromptTemplate.from_template(
 	
 	---------------------                 
 	---------------------
+    Here are provided similar to request context, use them, if you find them usefull to make better prediction
 	<context>
 	{context}
 	</context>
