@@ -46,10 +46,10 @@ services/chroma/vector_store/*.sqlite3
 services/langfuse
 
 # Игнорируем все файлы в папке Removed
-services/tg_bot/Removed/
+services/tg_bot/Removed
 
 # Игнорируем все файлы в папке Running
-services/tg_bot/Running/
+services/tg_bot/Running
 
 # Игнорируем все файлы с определенными именами
 services/tg_bot/215e364cb42b
@@ -62,3 +62,4 @@ services/chroma/chroma_db
 services/chroma/chroma.log
 
 services/chroma/load_data.sh
+
