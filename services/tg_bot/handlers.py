@@ -3,19 +3,10 @@ import json
 import traceback
 from aiogram import html
 from aiogram.types import Message
-from aiogram.enums.parse_mode import ParseMode
 from utils import get_base_llm_response, get_security_rag_response
 from services.tg_bot.logger import logger
 from aiogram import Dispatcher
 from aiogram.filters import CommandStart
-from aiogram.types import Message
-from aiogram import html
-from utils import get_base_llm_response,  get_security_rag_response
-from services.tg_bot.logger import logger
-import json
-import traceback
-import re
-from aiogram.enums.parse_mode import ParseMode
 
 dp = Dispatcher()
 
@@ -31,7 +22,7 @@ def sanitize_html(text):
     return text
 
 @dp.message()
-async def echo_handler(message: Message) -> None:
+async def echo_handler(message: Message) -> str:
     try:
         question = message.text.strip()
         if not question:

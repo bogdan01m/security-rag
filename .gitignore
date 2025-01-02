@@ -44,3 +44,21 @@ services/chroma/vector_store/*.bin
 services/chroma/vector_store/*.sqlite3
 
 services/langfuse
+
+# Игнорируем все файлы в папке Removed
+services/tg_bot/Removed/
+
+# Игнорируем все файлы в папке Running
+services/tg_bot/Running/
+
+# Игнорируем все файлы с определенными именами
+services/tg_bot/215e364cb42b
+services/tg_bot/966250831d41
+
+# Игнорируем все файлы с расширением .pyc (если есть)
+*.pyc
+
+services/chroma/chroma_db
+services/chroma/chroma.log
+
+services/chroma/load_data.sh

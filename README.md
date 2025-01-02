@@ -38,3 +38,6 @@ docker compose up
 ## Env settings
 Are available in `.env_example`
 you should create your own `.env` file with your own settings, based on `.env_example`
+
+services/chroma/chroma.log
+services/chroma/chroma_db
