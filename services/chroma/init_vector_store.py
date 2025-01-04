@@ -32,7 +32,10 @@ def initialize_vector_store(persist_directory: str):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Initialize vector store")
     parser.add_argument(
-        "--persist_directory",type=str,required=True, help="path to chroma_db"
+        "--persist_directory",
+        type=str,required=True, 
+        help="path to chroma_db"
     )
+    args = parser.parse_args()
 
-    initialize_vector_store(persist_directory="chroma/chroma_db")
+    initialize_vector_store(args.persist_directory)
