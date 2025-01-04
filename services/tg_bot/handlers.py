@@ -4,7 +4,7 @@ import traceback
 from aiogram import html
 from aiogram.types import Message
 from utils import get_base_llm_response, get_security_rag_response
-from services.tg_bot.logger import logger
+from logger import logger
 from aiogram import Dispatcher
 from aiogram.filters import CommandStart
 

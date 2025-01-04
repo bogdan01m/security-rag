@@ -7,55 +7,69 @@ services:
       - .env
     environment:
       - CHROMA_PERSIST_DIRECTORY=${CHROMA_PERSIST_DIRECTORY}
-      - CSV_FILE_PATH=${CSV_FILE_PATH}
-      - NVIDIA_VISIBLE_DEVICES=0  # GPU Index
-      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
     ports:
-      - "${CHROMA_PORT}:8000"
+      - "${CHROMA_PORT}:8000"  
     volumes:
-      - chroma_data:/app/llm_service/chroma_vector_store
+      - chroma_data:/app/chroma_vector_store
       - ./services/chroma:/app
-    
-    runtime: nvidia
-
+    depends_on:
+      - ollama
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
       
 
   sec_rag:
     build:
-      context: .
-      dockerfile: services/sec_rag/Dockerfile  
+      context: ./services/sec_rag
     container_name: sec_rag_api
     env_file:
       - .env
-    ports:
-      - "${LLM_PORT}:8000"
     environment:
       - MISTRAL_API_KEY=${MISTRAL_API_KEY}
       - CHROMA_HOST=${CHROMA_HOST}
       - CHROMA_PORT=${CHROMA_PORT}
-      - NVIDIA_VISIBLE_DEVICES=0  # GPU Index
-      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
-    depends_on:
-      - chroma
-    runtime: nvidia
-
-
-
-
-  base_llm:
-    build:
-      context: .
-      dockerfile: services/base_llm/Dockerfile  
-    container_name: base_llm_api
-    env_file:
-      - .env
     ports:
-      - "${BASE_LLM_PORT}:8002"
-    environment:
-      - OLLAMA_HOST=${OLLAMA_HOST}
-      - OLLAMA_PORT=${OLLAMA_PORT}
+      - "${LLM_PORT}:8001"  
     depends_on:
       - ollama
+      - chroma
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+
+
+
+  # base_llm:
+  #   build:
+  #     context: .
+  #     dockerfile: services/base_llm/Dockerfile  
+  #   container_name: base_llm_api
+  #   env_file:
+  #     - .env
+  #   ports:
+  #     - "${BASE_LLM_PORT}:8002"
+  #   environment:
+  #     - OLLAMA_HOST=${OLLAMA_HOST}
+  #     - OLLAMA_PORT=${OLLAMA_PORT}
+  #   depends_on:
+  #     - ollama
+      # deploy:
+      # resources:
+      #   reservations:
+      #     devices:
+      #       - driver: nvidia
+      #         count: 1
+      #         capabilities: [gpu]
 
 
 
@@ -66,26 +80,30 @@ services:
       - .env
     environment:
       - OLLAMA_DATA=/root/.ollama
-      - NVIDIA_VISIBLE_DEVICES=0  # GPU Index
-      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
     volumes:
       - ollama_data:/root/.ollama
     ports:
       - "${OLLAMA_PORT}:11435"
-    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
 
-  telegram_bot:
-    build:
-      context: .
-      dockerfile: services/tg_bot/Dockerfile  
-    container_name: telegram_bot
-    env_file:
-      - .env  
-    environment:
-      - BOT_TOKEN=${BOT_TOKEN}  
-    restart: always  
-    volumes:
-      - ./services/tg_bot:/app  
+  # telegram_bot:
+  #   build:
+  #     context: .
+  #     dockerfile: services/tg_bot/Dockerfile  
+  #   container_name: telegram_bot
+  #   env_file:
+  #     - .env  
+  #   environment:
+  #     - BOT_TOKEN=${BOT_TOKEN}  
+  #   restart: always  
+  #   volumes:
+  #     - ./services/tg_bot:/app  
 
 
 volumes:

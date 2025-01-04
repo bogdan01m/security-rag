@@ -1,7 +1,7 @@
 import httpx
 import asyncio
 from config import BASE_LLM_API, LLM_API
-from services.tg_bot.logger import logger
+from logger import logger
 
 async def get_base_llm_response(user_id: int, question: str, retries: int = 3, delay: float = 2.0) -> dict:
     timeout = httpx.Timeout(connect=5.0, read=30.0, write=30.0, pool=30.0)  # Тайм-аут для подключения, чтения, записи и пула
