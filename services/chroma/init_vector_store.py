@@ -1,17 +1,24 @@
 import logging
-
+import os 
 import argparse
 from langchain_ollama import OllamaEmbeddings
 from langchain_chroma import Chroma
-
+from dotenv import load_dotenv
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(message)s")
 logger = logging.getLogger(__name__)
 
 
 def initialize_vector_store(persist_directory: str):
+    load_dotenv()
 
-    
-    embeddings_model = OllamaEmbeddings(model="nomic-embed-text")
+    ollama_host = os.getenv("OLLAMA_HOST", "localhost") 
+    ollama_port = os.getenv("OLLAMA_PORT", "11435") 
+    ollama_url = f"http://{ollama_host}:{ollama_port}" 
+
+    embeddings_model = OllamaEmbeddings(
+        model="nomic-embed-text",
+        base_url=ollama_url  
+    )
 
     logger.info("Инициализация нового векторного хранилища")
 

@@ -11,7 +11,7 @@ COPY . /app
 
 ENV CHROMA_PERSIST_DIRECTORY=/app/chroma_db
 
-RUN python init_vector_store.py --persist_directory $CHROMA_PERSIST_DIRECTORY
+# RUN python init_vector_store.py --persist_directory $CHROMA_PERSIST_DIRECTORY
 
 EXPOSE 8000
 
