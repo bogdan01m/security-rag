@@ -22,6 +22,8 @@ class SecurityRAG:
         chroma_host: str,
         chroma_port: int,
         mistral_api: str,
+        ollama_host: str,
+        ollama_port: int,
         # langfuse_secret_key: str,
         # langfuse_public_key: str,
         # langfuse_host: str,
@@ -41,8 +43,12 @@ class SecurityRAG:
             temperature=0.5, 
             max_tokens=128
         )
+
         logger.info(f"Mistal key: {mistral_api[:10]}")
-        self.embeddings_model = OllamaEmbeddings(model=embeddings)
+
+        self.ollama_url= f"http://{ollama_host}:{ollama_port}" 
+
+        self.embeddings_model = OllamaEmbeddings(model=embeddings, base_url= self.ollama_url)
         self.vector_store = Chroma(
             client=self.db_client,
             embedding_function=self.embeddings_model,

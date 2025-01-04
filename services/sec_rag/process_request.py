@@ -14,6 +14,8 @@ load_dotenv()
 MISTRAL_API_KEY = os.getenv("MISTRAL_API_KEY")
 CHROMA_HOST = os.getenv("CHROMA_HOST")
 CHROMA_PORT = os.getenv("CHROMA_PORT")
+OLLAMA_HOST = os.getenv("OLLAMA_HOST", "localhost") 
+OLLAMA_PORT = os.getenv("OLLAMA_PORT", "11435") 
 # LANGFUSE_SECRET_KEY = os.getenv("LANGFUSE_SECRET_KEY")
 # LANGFUSE_PUBLIC_KEY = os.getenv("LANGFUSE_PUBLIC_KEY")
 # LANGFUSE_HOST = os.getenv("LANGFUSE_HOST")
@@ -27,6 +29,8 @@ security_rag = SecurityRAG(
     chroma_port=CHROMA_PORT,
     mistral_api=MISTRAL_API_KEY,
     prompt=SECURITY_PROMPT_V1,
+    ollama_host=OLLAMA_HOST,
+    ollama_port=OLLAMA_PORT,
     # langfuse_secret_key=LANGFUSE_SECRET_KEY,
     # langfuse_public_key=LANGFUSE_PUBLIC_KEY,
     # langfuse_host=LANGFUSE_HOST,
