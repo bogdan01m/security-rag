@@ -31,11 +31,9 @@ class SecurityRAG:
         prompt: str,
         embeddings="nomic-embed-text"####"sentence-transformers/all-mpnet-base-v2",
     ):
-        self.db_client = chromadb.Client(
-            chromadb.Settings(
-                chroma_server_host=chroma_host,
-                chroma_server_http_port=chroma_port,
-            )
+        self.db_client = chromadb.HttpClient(
+                host=chroma_host,
+                port=chroma_port,
         )
         self.llm_client = ChatMistralAI(
             mistral_api_key=mistral_api,
@@ -47,6 +45,8 @@ class SecurityRAG:
         logger.info(f"Mistal key: {mistral_api[:10]}")
 
         self.ollama_url= f"http://{ollama_host}:{ollama_port}" 
+
+        logger.info(self.ollama_url)
 
         self.embeddings_model = OllamaEmbeddings(model=embeddings, base_url= self.ollama_url)
         self.vector_store = Chroma(
