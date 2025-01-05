@@ -8,11 +8,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . /app
 
-
 ENV CHROMA_PERSIST_DIRECTORY=/app/chroma_db
-
-# RUN python init_vector_store.py --persist_directory $CHROMA_PERSIST_DIRECTORY
 
 EXPOSE 8000
 
-CMD ["chroma", "run",  "--path", "/app/chroma_db"]
+CMD ["sh", "-c", \
+    "python init_vector_store.py  && \   
+    chroma run --path /app/chroma_db --host chroma_db:8000"]

@@ -5,7 +5,6 @@ langchain_huggingface==0.1.2
 langchain-community==0.3.10
 langchain_chroma==0.1.4
 langchain-ollama ==0.2.2
-langchain-nomic >= 0.1.4
 httpcore==1.0.7 ; python_version >= "3.10" and python_version < "4.0"
 httptools==0.6.4 ; python_version >= "3.10" and python_version < "4.0"
 httpx-sse==0.4.0 ; python_version >= "3.10" and python_version < "4.0"

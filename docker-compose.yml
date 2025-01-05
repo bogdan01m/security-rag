@@ -7,15 +7,15 @@ services:
       - .env
     environment:
       - CHROMA_PERSIST_DIRECTORY=${CHROMA_PERSIST_DIRECTORY}
+      - OLLAMA_HOST=${OLLAMA_HOST}
+      - OLLAMA_PORT=${OLLAMA_PORT}
     ports:
       - "${CHROMA_PORT}:8000"  
     volumes:
-      - chroma_data:/app/chroma_vector_store
+      - chroma_data:/app/chroma_db
       - ./services/chroma:/app
-    depends_on:
-      - ollama
-    networks:
-      - ollama-docker
+    # depends_on:
+    #   - ollama
     deploy:
       resources:
         reservations:
@@ -35,13 +35,13 @@ services:
       - MISTRAL_API_KEY=${MISTRAL_API_KEY}
       - CHROMA_HOST=${CHROMA_HOST}
       - CHROMA_PORT=${CHROMA_PORT}
+      - OLLAMA_HOST=${OLLAMA_HOST}
+      - OLLAMA_PORT=$(OLLAMA_PORT)
     ports:
       - "${LLM_PORT}:8001"  
     depends_on:
-      - ollama
+      # - ollama
       - chroma
-    networks:
-      - ollama-docker  
     deploy:
       resources:
         reservations:
@@ -77,28 +77,26 @@ services:
 
 
 
-  ollama:
-    image: ollama/ollama:latest
-    container_name: ollama
-    pull_policy: always
-    tty: true
-    env_file:
-      - .env      
-    volumes:
-      - ollama_data:/root/.ollama
-    ports:
-      - "${OLLAMA_PORT}:11435"
-    networks:
-      - ollama-docker  
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
-    entrypoint: >
-      /bin/bash -c "ollama pull nomic-embed && ollama serve"
+  # ollama:
+  #   image: ollama/ollama:latest
+  #   container_name: ollama
+  #   pull_policy: always
+  #   tty: true
+  #   env_file:
+  #     - .env      
+  #   volumes:
+  #     - ollama_data:/root/.ollama
+  #   ports:
+  #     - "${OLLAMA_PORT}:11435"
+  #   networks:
+  #     - ollama-docker  
+  #   deploy:
+  #     resources:
+  #       reservations:
+  #         devices:
+  #           - driver: nvidia
+  #             count: 1
+  #             capabilities: [gpu]
 
   # telegram_bot:
   #   build:
@@ -116,10 +114,10 @@ services:
 
 volumes:
   chroma_data:
-  ollama_data:
+  # ollama_data:
 
 networks:
-  ollama-docker:
-    external: false
+  # ollama-docker:
+  #   external: false
   sec_rag_network:
     driver: bridge
