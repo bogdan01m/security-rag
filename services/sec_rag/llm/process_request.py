@@ -3,19 +3,19 @@ from dotenv import load_dotenv
 
 from fastapi import APIRouter
 
-from logger import logger
-from security_rag import SecurityRAG
-from prompt import SECURITY_PROMPT_V1
+from llm.logger import logger
+from llm.security_rag import SecurityRAG
+from llm.prompt import SECURITY_PROMPT_V1
 
-from models import UserRequest, RAGResponse
+from llm.models import UserRequest, RAGResponse
 
 
 load_dotenv()
 MISTRAL_API_KEY = os.getenv("MISTRAL_API_KEY")
 CHROMA_HOST = os.getenv("CHROMA_HOST")
 CHROMA_PORT = os.getenv("CHROMA_PORT")
-OLLAMA_HOST = os.getenv("OLLAMA_HOST", "localhost") 
-OLLAMA_PORT = os.getenv("OLLAMA_PORT", "11434") 
+OLLAMA_HOST = os.getenv("OLLAMA_HOST") 
+OLLAMA_PORT = os.getenv("OLLAMA_PORT") 
 # LANGFUSE_SECRET_KEY = os.getenv("LANGFUSE_SECRET_KEY")
 # LANGFUSE_PUBLIC_KEY = os.getenv("LANGFUSE_PUBLIC_KEY")
 # LANGFUSE_HOST = os.getenv("LANGFUSE_HOST")

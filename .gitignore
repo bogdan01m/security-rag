@@ -64,3 +64,6 @@ services/chroma/chroma.log
 services/chroma/load_data.sh
 
 !Security_rag.postman_collection.json
+
+services/sec_rag/chroma/chroma_db
+services/sec_rag/chroma/chroma.log
