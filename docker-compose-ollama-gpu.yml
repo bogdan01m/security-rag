@@ -1,16 +1,33 @@
 services:
 
+  # ollama:
+  #   container_name: ollama
+  #   pull_policy: always
+  #   tty: true
+  #   build:
+  #     # context: ./services/sec_rag/ollama
+  #     dockerfile: ./services/sec_rag/ollama/Dockerfile
+  #   env_file:
+  #     - .env      
+  #   volumes:
+  #     - ollama:/root/.ollama
+  #   ports:
+  #     - "${OLLAMA_PORT}:11434"
+  #   restart: always 
+  #   deploy:
+  #     resources:
+  #       reservations:
+  #         devices:
+  #           - driver: nvidia
+  #             count: 1
+  #             capabilities: [gpu]
+
   chroma:
     build:
       context: ./services/sec_rag/chroma
     container_name: chroma
     env_file:
       - .env
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000"]
-      interval: 10s
-      timeout: 5s
-      retries: 3  
     environment:
       - CHROMA_PERSIST_DIRECTORY=${CHROMA_PERSIST_DIRECTORY}
       - OLLAMA_HOST=${OLLAMA_HOST}
@@ -28,35 +45,31 @@ services:
               count: 1
               capabilities: [gpu]
       
-  llm:
-    build:
-      context: ./services/sec_rag/llm
-    container_name: llm_api
-    env_file:
-      - .env
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8001"]
-      interval: 10s
-      timeout: 5s
-      retries: 3    
-    environment:
-      - MISTRAL_API_KEY=${MISTRAL_API_KEY}
-      - CHROMA_HOST=${CHROMA_HOST}
-      - CHROMA_PORT=${CHROMA_PORT}
-      - OLLAMA_HOST=${OLLAMA_HOST}
-      - OLLAMA_PORT=$(OLLAMA_PORT)
-    ports:
-      - "${LLM_PORT}:8001"  
-    depends_on:
-      - chroma
-    network_mode: host  
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
+
+  # sec_rag:
+  #   build:
+  #     context: ./services/sec_rag
+  #   container_name: sec_rag_api
+  #   env_file:
+  #     - .env
+  #   environment:
+  #     - MISTRAL_API_KEY=${MISTRAL_API_KEY}
+  #     - CHROMA_HOST=${CHROMA_HOST}
+  #     - CHROMA_PORT=${CHROMA_PORT}
+  #     - OLLAMA_HOST=${OLLAMA_HOST}
+  #     - OLLAMA_PORT=$(OLLAMA_PORT)
+  #   ports:
+  #     - "${LLM_PORT}:8001"  
+  #   depends_on:
+  #     # - ollama
+  #     - chroma
+  #   deploy:
+  #     resources:
+  #       reservations:
+  #         devices:
+  #           - driver: nvidia
+  #             count: 1
+  #             capabilities: [gpu]
 
 
 
@@ -99,9 +112,10 @@ services:
 
 
 volumes:
+  # ollama:
   chroma:
 
 
 # networks:
-#   sec_rag_network:
-#     driver: bridge
+#   host:
+#     external: true
