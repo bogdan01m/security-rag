@@ -12,7 +12,6 @@ def initialize_vector_store():
     ollama_host = os.getenv("OLLAMA_HOST", "localhost")
     ollama_port = os.getenv("OLLAMA_PORT", "11435")
     ollama_url = f"http://{ollama_host}:{ollama_port}"
-
     logger.info(f"Проверка Ollama по адресу: {ollama_url}")
 
 

@@ -1,9 +1,9 @@
 import os
 from dotenv import load_dotenv
 from fastapi import APIRouter
-from services.tg_bot.logger import logger
-from services.base_llm.llm import get_llm_response
-from services.base_llm.models import UserRequest, Base_LLM
+from base_llm.logger import logger
+from base_llm.llm import get_llm_response
+from base_llm.models import UserRequest, Base_LLM
 
 
 load_dotenv()
@@ -11,6 +11,8 @@ LANGFUSE_SECRET_KEY = os.getenv("LANGFUSE_SECRET_KEY")
 LANGFUSE_PUBLIC_KEY = os.getenv("LANGFUSE_PUBLIC_KEY")
 LANGFUSE_HOST = os.getenv("LANGFUSE_HOST")
 LANGFUSE_PORT = os.getenv("LANGFUSE_PORT")
+OLLAMA_HOST = os.getenv("OLLAMA_HOST", "localhost") 
+OLLAMA_PORT = os.getenv("OLLAMA_PORT", "11434") 
 
 router = APIRouter()
 
@@ -22,7 +24,9 @@ async def process_request(request: UserRequest) -> Base_LLM:
                                                    langfuse_secret_key=LANGFUSE_SECRET_KEY,
                                                    langfuse_public_key=LANGFUSE_PUBLIC_KEY,
                                                    langfuse_host=LANGFUSE_HOST,
-                                                   langfuse_port=LANGFUSE_PORT
+                                                   langfuse_port=LANGFUSE_PORT,
+                                                   ollama_host=OLLAMA_HOST,
+                                                   ollama_port=OLLAMA_PORT
                                                   )
         logger.info(f"Raw LLM Response: {base_llm_response}")
         
