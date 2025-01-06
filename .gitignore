@@ -67,3 +67,4 @@ services/chroma/load_data.sh
 
 services/sec_rag/chroma/chroma_db
 services/sec_rag/chroma/chroma.log
+services/sec_rag/chroma/services/sec_rag

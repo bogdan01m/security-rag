@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import Any, Dict, Union
 from pydantic import BaseModel
 
-from services.base_llm.logger import logger
+from base_llm.logger import logger
 
 
 class UserRequest(BaseModel):

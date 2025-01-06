@@ -6,6 +6,7 @@ COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . ./tg_bot
+COPY . /app
 
-CMD ["python", "tg_bot/bot.py"]
+
+CMD ["python", "bot.py"]
