@@ -1,3 +1,4 @@
+# Security-RAG: LLM Vulnerability Detection using RAG as Guardrail
 <p align="center">
   <a href="https://colab.research.google.com/drive/1IkgCnvOo3xt-TJUDOkKOPAl6XS3xKjtt#scrollTo=K4bDXI3jSCF2b">
     <img src="https://colab.research.google.com/assets/colab-badge.svg">
@@ -10,9 +11,22 @@
   </a>
 </p>
 
-# Security-rag
 
-Project for LLM vulnerability detection using RAG as guardrail.
+
+**security-rag** is a project designed to detect vulnerabilities in Large Language Models (LLMs) by using a Retrieval-Augmented Generation (RAG) approach as a guardrail. The system classifies various aspects of LLM responses to ensure safety, compliance, and ethical behavior.
+
+## Features
+
+- **User Request Harmfulness Classification**: The system analyzes the user input to classify whether the request contains harmful or inappropriate content.
+- **LLM Response Classification**: The LLM response is classified to determine if it provides harmful or potentially dangerous information.
+- **LLM Refusal Classification**: The system detects whether the LLM refuses to provide harmful content and classifies the nature of this refusal.
+
+## Project Components
+
+- **RAG-Based Approach**: A retrieval-augmented generation framework is used to provide context for the LLM and evaluate its responses.
+- **Chroma Vector DB**: A vector database is used for storing and retrieving relevant context data for the LLM, enabling better classification and detection.
+- **Dataset**: The system is trained and tested on the **WildGuardMix-Cleaned** dataset, which contains examples of potentially harmful user requests and corresponding LLM responses.
+
 
 
 # System Design
