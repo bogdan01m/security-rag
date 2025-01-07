@@ -11,9 +11,12 @@
   </a>
 </p>
 
-
+**Authors:**
+[Bogdan Minko](https://github.com/bogdan01m) ⭐,
+[Nikita Zinovich](https://github.com/zeinovich) ⭐,
 
 **security-rag** is a project designed to detect vulnerabilities in Large Language Models (LLMs) by using a Retrieval-Augmented Generation (RAG) approach as a guardrail. The system classifies various aspects of LLM responses to ensure safety, compliance, and ethical behavior.
+
 
 ## Features
 
