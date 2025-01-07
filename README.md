@@ -25,7 +25,7 @@
 - **LLM Refusal Classification**: The system detects whether the LLM refuses to provide harmful content and classifies the nature of this refusal.
 
 ## Video Demonstration (mini)
-<video src="assets/mini-demo.mp4" controls autoplay loop muted>
+<video src="https://github.com/bogdan01m/security-rag/blob/main/assets/mini-demo.mp4" controls autoplay loop muted>
     Your browser does not support the video tag.
 </video>
 
