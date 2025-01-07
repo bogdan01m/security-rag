@@ -24,14 +24,12 @@
 - **LLM Response Classification**: The LLM response is classified to determine if it provides harmful or potentially dangerous information.
 - **LLM Refusal Classification**: The system detects whether the LLM refuses to provide harmful content and classifies the nature of this refusal.
 
-## Video Demonstration
-
-<video width="640" height="360" controls>
-  <source src="demonstration.mp4" type="video/mp4">
-  Your browser does not support the video tag.
+## Video Demonstration (mini)
+<video src="assets/mini-demo.mp4" controls autoplay loop muted>
+    Your browser does not support the video tag.
 </video>
 
-[link to video](https://drive.google.com/file/d/1BdPGZccXnk5G_v1CMLkSqb9iqhJaxUYf/view?usp=sharing)
+[link to full video](https://drive.google.com/file/d/1BdPGZccXnk5G_v1CMLkSqb9iqhJaxUYf/view?usp=sharing)
 
 # System Design
                         +----------------+
