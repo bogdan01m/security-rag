@@ -26,9 +26,9 @@
 
 ## Video Demonstration
 
-[![Security-rag demo (mini)](assets/entire_pic.png)](https://youtu.be/FdIIIuAHoqU)
+[<img src="https://img.youtube.com/vi/FdIIIuAHoqU/maxresdefault.jpg" width="100%">](https://youtu.be/FdIIIuAHoqU)
 
-- 📺 [link to mini video](https://youtu.be/OGwlHT0txNss)
+- 📺 [link to mini video](https://youtu.be/FdIIIuAHoqU)
 - 📺 [link to full video](https://youtu.be/OGwlHT0txNss)
 
 
