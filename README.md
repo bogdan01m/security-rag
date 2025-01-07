@@ -24,12 +24,13 @@
 - **LLM Response Classification**: The LLM response is classified to determine if it provides harmful or potentially dangerous information.
 - **LLM Refusal Classification**: The system detects whether the LLM refuses to provide harmful content and classifies the nature of this refusal.
 
-## Video Demonstration (mini)
-<video src="https://github.com/bogdan01m/security-rag/blob/main/assets/mini-demo.mp4" controls autoplay loop muted>
-    Your browser does not support the video tag.
-</video>
+## Video Demonstration
 
-[link to full video](https://drive.google.com/file/d/1BdPGZccXnk5G_v1CMLkSqb9iqhJaxUYf/view?usp=sharing)
+[![Security-rag demo (mini)](assets/entire_pic.png)](https://youtu.be/FdIIIuAHoqU)
+
+- 📺 [link to mini video](https://youtu.be/OGwlHT0txNss)
+- 📺 [link to full video](https://youtu.be/OGwlHT0txNss)
+
 
 # System Design
                         +----------------+
