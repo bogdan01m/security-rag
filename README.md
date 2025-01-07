@@ -21,13 +21,6 @@
 - **LLM Response Classification**: The LLM response is classified to determine if it provides harmful or potentially dangerous information.
 - **LLM Refusal Classification**: The system detects whether the LLM refuses to provide harmful content and classifies the nature of this refusal.
 
-## Project Components
-
-- **RAG-Based Approach**: A retrieval-augmented generation framework is used to provide context for the LLM and evaluate its responses.
-- **Chroma Vector DB**: A vector database is used for storing and retrieving relevant context data for the LLM, enabling better classification and detection.
-- **Dataset**: The system is trained and tested on the **WildGuardMix-Cleaned** dataset, which contains examples of potentially harmful user requests and corresponding LLM responses.
-
-
 
 # System Design
                         +----------------+
