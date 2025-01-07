@@ -21,7 +21,9 @@
 - **LLM Response Classification**: The LLM response is classified to determine if it provides harmful or potentially dangerous information.
 - **LLM Refusal Classification**: The system detects whether the LLM refuses to provide harmful content and classifies the nature of this refusal.
 
+## Video Demonstration
 
+![demonstration](demonstration.mp4)
 
 # System Design
                         +----------------+
