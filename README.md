@@ -22,6 +22,7 @@
 - **LLM Refusal Classification**: The system detects whether the LLM refuses to provide harmful content and classifies the nature of this refusal.
 
 
+
 # System Design
                         +----------------+
                         | Telegram Bot   |
@@ -163,3 +164,36 @@ after initialize pytest.ini
 ```
 pytest
 ```
+
+
+
+
+## Evaluation
+
+Test sample : <a href="https://huggingface.co/datasets/allenai/wildguardmix">
+  <img src="https://img.shields.io/badge/🤗-Dataset-orange">
+</a>
+
+The evaluation showed that Security-RAG (RAG-based approach) outperformed the other models in Response Harm detection when considering the F1-weighted score, establishing a new state-of-the-art for this label, with an F1-weighted score of 89.9%. For Prompt Harm detection, Security-RAG ranked third, after GPT-4 and WILDGUARD, achieving 86.5%. In Refusal Detection, Security-RAG took second place after GPT-4, with an F1 score of 92.0%.
+
+Research part is available in [google collab](https://colab.research.google.com/drive/1IkgCnvOo3xt-TJUDOkKOPAl6XS3xKjtt#scrollTo=K4bDXI3jSCF2b)
+
+for more research information visit [NPL-Course.ODS.Autumn-2024](https://github.com/bogdan01m/NPL-Course.ODS.Autumn-2024) repository.
+| **Model**                  | **Prompt Harm (\%)** | **Response Harm (\%)** | **Refusal Detection (\%)** |
+|----------------------------|----------------------|------------------------|----------------------------|
+| Llama-Guard                | 56.0                 | 50.5                   | 51.4                       |
+| Llama-Guard2               | 70.9                 | 66.5                   | 53.8                       |
+| Aegis-Guard-D              | 78.5                 | 49.1                   | 41.8                       |
+| Aegis-Guard-P              | 71.5                 | 56.4                   | 46.9                       |
+| HarmB-Llama                | -                    | 45.7                   | 73.1                       |
+| HarmB-Mistral              | -                    | 60.1                   | 58.6                       |
+| MD-Judge                   | -                    | 76.8                   | 55.5                       |
+| BeaverDam                  | -                    | 63.4                   | 54.1                       |
+| LibrAI-LongFormer-harm     | -                    | 62.3                   | 62.3                       |
+| LibrAI-LongFormer-ref      | -                    | 63.2                   | 63.2                       |
+| Keyword-based              | -                    | 70.1                   | 70.1                       |
+| OAI Mod. API               | 12.1                 | 16.9                   | 66.3                       |
+| GPT-4                      | 87.9                 | 77.3                   | **92.4**                   |
+| WILDGUARD                  | **88.9**             | 75.4                   | 88.6                       |                   |
+| **Security-RAG**           | 86.5                 | **89.9**               | **92.0**                   |
+
