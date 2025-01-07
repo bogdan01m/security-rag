@@ -1,6 +1,19 @@
+<p align="center">
+  <a href="https://colab.research.google.com/drive/1IkgCnvOo3xt-TJUDOkKOPAl6XS3xKjtt#scrollTo=K4bDXI3jSCF2b">
+    <img src="https://colab.research.google.com/assets/colab-badge.svg">
+  </a>
+  <a href="https://huggingface.co/datasets/Bogdan01m/wildguardmix-cleaned">
+    <img src="https://img.shields.io/badge/🤗-Dataset-orange">
+  </a>
+  <a href="https://drive.google.com/file/d/1DiZfkkMxhKhJ_gJjjlSo6vBV2e3vBlgi/view?usp=sharing">
+    <img src="https://img.shields.io/badge/🗃️-Chroma_DB-green">
+  </a>
+</p>
+
 # Security-rag
 
 Project for LLM vulnerability detection using RAG as guardrail.
+
 
 # System Design
                         +----------------+
