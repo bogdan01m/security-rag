@@ -28,6 +28,8 @@
   Your browser does not support the video tag.
 </video>
 
+[link to video](https://drive.google.com/file/d/1BdPGZccXnk5G_v1CMLkSqb9iqhJaxUYf/view?usp=sharing)
+
 # System Design
                         +----------------+
                         | Telegram Bot   |
