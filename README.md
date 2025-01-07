@@ -30,14 +30,15 @@ Project for LLM vulnerability detection using RAG as guardrail.
 
 ## Services 
 
-| Service         | Description                                | Host        | Port  |
-|------------------|--------------------------------------------|-------------|-------|
-| Chroma DB       | Vector database for RAG                   | localhost   | 8000  |
-| LLM API         | API for the main LLM service              | localhost   | 8001  |
-| Base LLM        | Victim model                              | localhost   | 8002  |
-| Telegram Bot    | Telegram bot for interaction              | localhost   | -     |
-| Ollama          | Hosting embeddings and models             | localhost   | 11434 |
-| Langfuse        | Monitoring of LLM and Base LLM services| localhost   | 3000  |
+| Service         | Description                                | URL                                      | Notes                                   |
+|------------------|--------------------------------------------|------------------------------------------|-----------------------------------------|
+| Chroma DB       | Vector database for RAG                   | http://localhost:8000                   | Uses `CHROMA_PERSIST_DIRECTORY`         |
+| LLM API         | API for the main LLM service              | http://localhost:8001/process_request_with_response/ | Requires `MISTRAL_API_KEY`            |
+| Base LLM        | Victim model                              | http://localhost:8002/process_request/  | -                                       |
+| Telegram Bot    | Telegram bot for interaction              | -                                        | Requires `BOT_TOKEN`                   |
+| Ollama          | Hosting embeddings and models             | http://localhost:11434                  | Requires `nomic-embed-text`,  `gemma2:2b`                                      |
+| Langfuse        | Monitoring of LLM and Base LLM services   | http://localhost:3000                   | Requires `LANGFUSE_SECRET_KEY` and `LANGFUSE_PUBLIC_KEY` |
+
 
 
 # How to use
@@ -100,21 +101,45 @@ For removing langfuse errors while running the application just delete langfuse 
 Are available in `.env_example`
 you should create your own `.env` file with your own settings, based on example
 
-## 5. Run docker compose (CUDA)
+## 5.0 Run docker compose (CUDA)
 If you have nvidia graphic card and ollama is able to use `cuda`
 ```
 docker compose up
 ```
-This will start the default security-rag instance (without langfuse)
+This will start the full security-rag instance
 
 ## 5.1 Run docker compose (CPU)
-If you don't have any nvidia-card or just wanna run application on RAM with CPU
+If you don't have any nvidia-card or just want to run application on RAM with CPU
 ```
 docker compose -f docker-compose-cpu.yml up
 ```
-This will start the default security-rag instance.
+This will start the full security-rag instance.
 
+## 5.2 Run docker compose base (GPU) (only security-rag with LLM and Chroma)
+By default it uses `cuda` 
+```
+docker compose -f docker-compose-base(gpu).yml up
+```
+This will start the default security-rag instance.
 
 ## Resources
 - For running on GPU you will need at least 8GB of RAM and 4GB of VRAM or more
 - For running on CPU you will need at least 12 GB of RAM or more
+
+## Testing
+After running the application with docker compose, you can test Chroma API, LLM_API (security-rag llm) and BASE_LLM_API
+using pytest
+
+go to :
+```
+cd tests
+```
+run 
+```
+pip install requirements.txt
+```
+
+after initialize pytest.ini
+```
+pytest
+```
