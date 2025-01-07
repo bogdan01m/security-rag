@@ -1,26 +1,25 @@
 services:
 
-  # ollama:
-  #   container_name: ollama
-  #   pull_policy: always
-  #   tty: true
-  #   build:
-  #     # context: ./services/sec_rag/ollama
-  #     dockerfile: ./services/sec_rag/ollama/Dockerfile
-  #   env_file:
-  #     - .env      
-  #   volumes:
-  #     - ollama:/root/.ollama
-  #   ports:
-  #     - "${OLLAMA_PORT}:11434"
-  #   restart: always 
-  #   deploy:
-  #     resources:
-  #       reservations:
-  #         devices:
-  #           - driver: nvidia
-  #             count: 1
-  #             capabilities: [gpu]
+  ollama:
+    container_name: ollama
+    pull_policy: always
+    tty: true
+    build:
+      context: ./services/sec_rag/ollama
+    env_file:
+      - .env      
+    volumes:
+      - ollama:/root/.ollama
+    ports:
+      - "${OLLAMA_PORT}:11434"
+    restart: always 
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
 
   chroma:
     build:
@@ -28,6 +27,11 @@ services:
     container_name: chroma
     env_file:
       - .env
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000"]
+      interval: 10s
+      timeout: 5s
+      retries: 3  
     environment:
       - CHROMA_PERSIST_DIRECTORY=${CHROMA_PERSIST_DIRECTORY}
       - OLLAMA_HOST=${OLLAMA_HOST}
@@ -45,77 +49,91 @@ services:
               count: 1
               capabilities: [gpu]
       
-
-  # sec_rag:
-  #   build:
-  #     context: ./services/sec_rag
-  #   container_name: sec_rag_api
-  #   env_file:
-  #     - .env
-  #   environment:
-  #     - MISTRAL_API_KEY=${MISTRAL_API_KEY}
-  #     - CHROMA_HOST=${CHROMA_HOST}
-  #     - CHROMA_PORT=${CHROMA_PORT}
-  #     - OLLAMA_HOST=${OLLAMA_HOST}
-  #     - OLLAMA_PORT=$(OLLAMA_PORT)
-  #   ports:
-  #     - "${LLM_PORT}:8001"  
-  #   depends_on:
-  #     # - ollama
-  #     - chroma
-  #   deploy:
-  #     resources:
-  #       reservations:
-  #         devices:
-  #           - driver: nvidia
-  #             count: 1
-  #             capabilities: [gpu]
-
-
-
-
-  # base_llm:
-  #   build:
-  #     context: .
-  #     dockerfile: services/base_llm/Dockerfile  
-  #   container_name: base_llm_api
-  #   env_file:
-  #     - .env
-  #   ports:
-  #     - "${BASE_LLM_PORT}:8002"
-  #   environment:
-  #     - OLLAMA_HOST=${OLLAMA_HOST}
-  #     - OLLAMA_PORT=${OLLAMA_PORT}
-  #   depends_on:
-  #     - ollama
-      # deploy:
-      # resources:
-      #   reservations:
-      #     devices:
-      #       - driver: nvidia
-      #         count: 1
-      #         capabilities: [gpu]
+  llm:
+    build:
+      context: ./services/sec_rag/llm
+    container_name: llm_api
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001"]
+      interval: 10s
+      timeout: 5s
+      retries: 3    
+    environment:
+      - MISTRAL_API_KEY=${MISTRAL_API_KEY}
+      - CHROMA_HOST=${CHROMA_HOST}
+      - CHROMA_PORT=${CHROMA_PORT}
+      - OLLAMA_HOST=${OLLAMA_HOST}
+      - OLLAMA_PORT=${OLLAMA_PORT}
+      - LANGFUSE_SECRET_KEY=${LANGFUSE_SECRET_KEY}
+      - LANGFUSE_PUBLIC_KEY=${LANGFUSE_PUBLIC_KEY}
+      - LANGFUSE_HOST=${LANGFUSE_HOST}
+      - LANGFUSE_PORT=${LANGFUSE_PORT}
+    ports:
+      - "${LLM_PORT}:8001"  
+    depends_on:
+      - chroma
+    network_mode: host  
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
 
 
-  # telegram_bot:
-  #   build:
-  #     context: .
-  #     dockerfile: services/tg_bot/Dockerfile  
-  #   container_name: telegram_bot
-  #   env_file:
-  #     - .env  
-  #   environment:
-  #     - BOT_TOKEN=${BOT_TOKEN}  
-  #   restart: always  
-  #   volumes:
-  #     - ./services/tg_bot:/app  
 
 
+  base_llm:
+    build:
+      context: ./services/base_llm
+    container_name: base_llm_api
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8002"]
+      interval: 10s
+      timeout: 5s
+      retries: 3      
+    ports:
+      - "${BASE_LLM_PORT}:8002"
+    environment:
+      - OLLAMA_HOST=${OLLAMA_HOST}
+      - OLLAMA_PORT=${OLLAMA_PORT}
+      - LANGFUSE_SECRET_KEY=${LANGFUSE_SECRET_KEY}
+      - LANGFUSE_PUBLIC_KEY=${LANGFUSE_PUBLIC_KEY}
+      - LANGFUSE_HOST=${LANGFUSE_HOST}
+      - LANGFUSE_PORT=${LANGFUSE_PORT}
+    network_mode: host    
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+
+  telegram_bot: 
+    build:
+      context: ./services/tg_bot
+    container_name: tg_api
+    env_file:
+      - .env  
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}  
+      - BASE_LLM_PORT=${BASE_LLM_PORT}
+      - BASE_LLM_HOST=${BASE_LLM_HOST}
+      - BASE_LLM_ENDPOINT=${BASE_LLM_ENDPOINT}
+      - LLM_PORT=${LLM_PORT}
+      - LLM_HOST=${LLM_HOST}
+      - LLM_ENDPOINT=${LLM_ENDPOINT}
+    restart: always  
+    network_mode: host 
+
+    
 volumes:
-  # ollama:
   chroma:
-
-
-# networks:
-#   host:
-#     external: true
+  ollama:

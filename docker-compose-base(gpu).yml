@@ -62,56 +62,6 @@ services:
               count: 1
               capabilities: [gpu]
 
-
-
-
-  base_llm:
-    build:
-      context: ./services/base_llm
-    container_name: base_llm_api
-    env_file:
-      - .env
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8002"]
-      interval: 10s
-      timeout: 5s
-      retries: 3      
-    ports:
-      - "${BASE_LLM_PORT}:8002"
-    environment:
-      - OLLAMA_HOST=${OLLAMA_HOST}
-      - OLLAMA_PORT=${OLLAMA_PORT}
-      - LANGFUSE_SECRET_KEY=${LANGFUSE_SECRET_KEY}
-      - LANGFUSE_PUBLIC_KEY=${LANGFUSE_PUBLIC_KEY}
-      - LANGFUSE_HOST=${LANGFUSE_HOST}
-      - LANGFUSE_PORT=${LANGFUSE_PORT}
-    network_mode: host    
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
-
-
-  telegram_bot: 
-    build:
-      context: ./services/tg_bot
-    container_name: tg_api
-    env_file:
-      - .env  
-    environment:
-      - BOT_TOKEN=${BOT_TOKEN}  
-      - BASE_LLM_PORT=${BASE_LLM_PORT}
-      - BASE_LLM_HOST=${BASE_LLM_HOST}
-      - BASE_LLM_ENDPOINT=${BASE_LLM_ENDPOINT}
-      - LLM_PORT=${LLM_PORT}
-      - LLM_HOST=${LLM_HOST}
-      - LLM_ENDPOINT=${LLM_ENDPOINT}
-    restart: always  
-    network_mode: host 
-
     
 volumes:
   chroma:
