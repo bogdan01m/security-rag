@@ -20,13 +20,6 @@ services:
     volumes:
       - chroma:/app/chroma_db 
     network_mode: host
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
       
   llm:
     build:
@@ -54,14 +47,6 @@ services:
     depends_on:
       - chroma
     network_mode: host  
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
-
 
 
 
@@ -86,13 +71,6 @@ services:
       - LANGFUSE_HOST=${LANGFUSE_HOST}
       - LANGFUSE_PORT=${LANGFUSE_PORT}
     network_mode: host    
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
 
 
   telegram_bot: 
@@ -116,3 +94,7 @@ services:
 volumes:
   chroma:
 
+
+# networks:
+#   sec_rag_network:
+#     driver: bridge

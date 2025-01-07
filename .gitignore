@@ -33,3 +33,38 @@ llm_service/chroma_vector_store/
 
 #ноутбук
 notebooks/data.ipynb
+example.log
+services/tg_bot/bot_copy.py
+services/base_llm/llm copy.py
+
+services/chroma/vector_store
+services/chroma/vector_store/*.bin
+services/chroma/vector_store/*.sqlite3
+services/chroma/vector_store/*.bin
+services/chroma/vector_store/*.sqlite3
+
+services/langfuse
+
+# Игнорируем все файлы в папке Removed
+services/tg_bot/Removed
+
+# Игнорируем все файлы в папке Running
+services/tg_bot/Running
+
+# Игнорируем все файлы с определенными именами
+services/tg_bot/215e364cb42b
+services/tg_bot/966250831d41
+
+# Игнорируем все файлы с расширением .pyc (если есть)
+*.pyc
+
+services/chroma/chroma_db
+services/chroma/chroma.log
+
+services/chroma/load_data.sh
+
+!Security_rag.postman_collection.json
+
+services/sec_rag/chroma/chroma_db
+services/sec_rag/chroma/chroma.log
+services/sec_rag/chroma/services/sec_rag

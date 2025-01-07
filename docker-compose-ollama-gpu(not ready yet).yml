@@ -1,5 +1,26 @@
 services:
 
+  ollama:
+    container_name: ollama
+    pull_policy: always
+    tty: true
+    build:
+      context: ./services/sec_rag/ollama
+    env_file:
+      - .env      
+    volumes:
+      - ollama:/root/.ollama
+    ports:
+      - "${OLLAMA_PORT}:11434"
+    restart: always 
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
   chroma:
     build:
       context: ./services/sec_rag/chroma
@@ -115,4 +136,4 @@ services:
     
 volumes:
   chroma:
-
+  ollama:
